@@ -1,0 +1,153 @@
+version: 2
+models:
+- name: stg_bpcs_arurhd
+  description: Staging model for BPCS ARURHD (Accounts Receivable Header) - Japan
+    BPCS system
+  columns:
+  - name: lhspcd
+    description: "Shop code - \u5E97\u8217\u30B3\u30FC\u30C9"
+    data_type: number
+    tests:
+    - not_null
+  - name: lhspno
+    description: "Shop number - \u5E97\u8217\u756A\u53F7"
+    data_type: varchar2
+    tests:
+    - not_null
+  - name: lhsptk
+    description: "Shop type code - \u5E97\u8217\u7A2E\u5225\u30B3\u30FC\u30C9"
+    data_type: varchar2
+  - name: lhtrbk
+    description: "Transaction book code - \u53D6\u5F15\u5E33\u7C3F\u30B3\u30FC\u30C9"
+    data_type: varchar2
+  - name: lhegcd
+    description: "Entry code - \u5165\u529B\u30B3\u30FC\u30C9"
+    data_type: varchar2
+  - name: lhedsq
+    description: "Entry sequence number - \u5165\u529B\u9806\u5E8F\u756A\u53F7"
+    data_type: number
+  - name: lhcscd
+    description: "Customer code - \u9867\u5BA2\u30B3\u30FC\u30C9"
+    data_type: varchar2
+  - name: lhhpcd
+    description: "Ship-to code - \u914D\u9001\u5148\u30B3\u30FC\u30C9"
+    data_type: varchar2
+  - name: lhsptp
+    description: "Shop type - \u5E97\u8217\u30BF\u30A4\u30D7"
+    data_type: varchar2
+  - name: lhtacd
+    description: "Tax code - \u7A0E\u52D9\u30B3\u30FC\u30C9"
+    data_type: varchar2
+  - name: lhspnd
+    description: "Suspend date - \u4FDD\u7559\u65E5\u4ED8"
+    data_type: number
+  - name: lhnyyd
+    description: "Net year date - \u5E74\u5EA6\u65E5\u4ED8"
+    data_type: number
+  - name: lhrcdt
+    description: "Record date - \u5E74\u5EA6\u65E5\u4ED8"
+    data_type: number
+  - name: lhpayk
+    description: "Payment key - \u652F\u6255\u30AD\u30FC"
+    data_type: varchar2
+  - name: lhdda1
+    description: "Detail data 1 - \u8A73\u7D30\u30C7\u30FC\u30BF1"
+    data_type: varchar2
+  - name: lhdda2
+    description: "Detail data 2 - \u8A73\u7D30\u30C7\u30FC\u30BF2"
+    data_type: varchar2
+  - name: lhspat
+    description: "Shop amount - \u5E97\u8217\u91D1\u984D"
+    data_type: number
+  - name: lhtaxm
+    description: "Tax amount - \u7A0E\u984D"
+    data_type: number
+  - name: lhaskm
+    description: "Ask amount - \u8ACB\u6C42\u984D"
+    data_type: number
+  - name: lhrsdt
+    description: "Reserve date - \u4E88\u7D04\u65E5"
+    data_type: number
+  - name: lhtaxh
+    description: "Tax hold - \u4E88\u7D04\u7A0E\u984D"
+    data_type: number
+  - name: lhrsam
+    description: "Reserve amount - \u4E88\u7D04\u91D1\u984D"
+    data_type: number
+  - name: lhslcd
+    description: "Sales code - \u58F2\u4E0A\u30B3\u30FC\u30C9"
+    data_type: number
+  - name: lhctax
+    description: "Customer tax - \u9867\u5BA2\u7A0E\u984D"
+    data_type: number
+  - name: lhchom
+    description: "Customer home amount - \u9867\u5BA2\u91D1\u984D\uFF08\u672C\u56FD\
+      \uFF09"
+    data_type: number
+  - name: lhtden
+    description: "Trade number - \u53D6\u5F15\u756A\u53F7"
+    data_type: varchar2
+  - name: lhtded
+    description: "Trade date - \u53D6\u5F15\u65E5\u4ED8"
+    data_type: number
+  - name: lhrcrm
+    description: "Record amount - \u5E74\u5EA6\u53D6\u5F15\u91D1\u984D"
+    data_type: number
+  - name: lhdlkb
+    description: "Delete key - \u524A\u9664\u30AD\u30FC"
+    data_type: varchar2
+  - name: lhodno
+    description: "Order number - \u6CE8\u6587\u756A\u53F7"
+    data_type: varchar2
+  - name: lhkhst
+    description: "Key history code - \u30AD\u30FC\u5C65\u6B74\u30B3\u30FC\u30C9"
+    data_type: varchar2
+  - name: lhnksf
+    description: "Net key flag - \u5E74\u5EA6\u30AD\u30FC\u30D5\u30E9\u30B0"
+    data_type: varchar2
+  - name: lhspnk
+    description: "Shop number key - \u5E97\u8217\u756A\u53F7\u30AD\u30FC"
+    data_type: varchar2
+  - name: lhnyuf
+    description: "Net year flag - \u5E74\u5EA6\u30D5\u30E9\u30B0"
+    data_type: varchar2
+  - name: lhtaxf
+    description: "Tax flag - \u7A0E\u30D5\u30E9\u30B0"
+    data_type: varchar2
+  - name: lhsefg
+    description: "Settlement flag - \u6C7A\u6E08\u30D5\u30E9\u30B0"
+    data_type: varchar2
+  - name: lhsedt
+    description: "Settlement date - \u6C7A\u6E08\u65E5\u4ED8"
+    data_type: number
+  - name: lhhryu
+    description: "Hold reason - \u4FDD\u7559\u7406\u7531"
+    data_type: varchar2
+  - name: lhdltf
+    description: "Delete flag - \u524A\u9664\u30D5\u30E9\u30B0"
+    data_type: varchar2
+  - name: lhrldt
+    description: "Release date - \u89E3\u9664\u65E5"
+    data_type: number
+  - name: lhrltm
+    description: "Release time - \u89E3\u9664\u6642\u523B"
+    data_type: number
+  - name: lhrlur
+    description: "Release user - \u89E3\u9664\u30E6\u30FC\u30B6\u30FC"
+    data_type: varchar2
+  - name: lhrlpg
+    description: "Release program - \u89E3\u9664\u30D7\u30ED\u30B0\u30E9\u30E0"
+    data_type: varchar2
+  - name: etl_load_dte
+    description: ETL load timestamp - when record was loaded into staging
+    data_type: timestamp
+    tests:
+    - not_null
+  tests:
+  - dbt_utils.unique_combination_of_columns:
+      combination_of_columns:
+      - lhspcd
+      - lhspno
+      - lhsptk
+      - lhegcd
+      - lhedsq

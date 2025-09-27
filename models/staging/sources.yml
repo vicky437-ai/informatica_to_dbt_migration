@@ -1,0 +1,149 @@
+version: 2
+sources:
+- name: bpcs_japan
+  description: Japan BPCS source system - Business Planning and Control System
+  database: '{{ env_var(''DBT_SOURCE_DATABASE'', ''XSPPACJP'') }}'
+  schema: RTRNLIB
+  tables:
+  - name: arurhd
+    description: ARURHD table from Japan BPCS system - Accounts Receivable Header
+    identifier: ARURHD
+    columns:
+    - name: lhspcd
+      description: "Shop code - \u5E97\u8217\u30B3\u30FC\u30C9"
+      data_type: numeric
+    - name: lhspno
+      description: "Shop number - \u5E97\u8217\u756A\u53F7"
+      data_type: char
+    - name: lhsptk
+      description: "Shop type code - \u5E97\u8217\u7A2E\u5225\u30B3\u30FC\u30C9"
+      data_type: char
+    - name: lhtrbk
+      description: "Transaction book code - \u53D6\u5F15\u5E33\u7C3F\u30B3\u30FC\u30C9"
+      data_type: char
+    - name: lhegcd
+      description: "Entry code - \u5165\u529B\u30B3\u30FC\u30C9"
+      data_type: char
+    - name: lhedsq
+      description: "Entry sequence number - \u5165\u529B\u9806\u5E8F\u756A\u53F7"
+      data_type: numeric
+    - name: lhcscd
+      description: "Customer code - \u9867\u5BA2\u30B3\u30FC\u30C9"
+      data_type: char
+    - name: lhhpcd
+      description: "Ship-to code - \u914D\u9001\u5148\u30B3\u30FC\u30C9"
+      data_type: char
+    - name: lhsptp
+      description: "Shop type - \u5E97\u8217\u30BF\u30A4\u30D7"
+      data_type: char
+    - name: lhtacd
+      description: "Tax code - \u7A0E\u52D9\u30B3\u30FC\u30C9"
+      data_type: char
+    - name: lhspnd
+      description: "Suspend date - \u4FDD\u7559\u65E5\u4ED8"
+      data_type: numeric
+    - name: lhnyyd
+      description: "Net year date - \u5E74\u5EA6\u65E5\u4ED8"
+      data_type: numeric
+    - name: lhrcdt
+      description: "Record date - \u5E74\u5EA6\u65E5\u4ED8"
+      data_type: numeric
+    - name: lhpayk
+      description: "Payment key - \u652F\u6255\u30AD\u30FC"
+      data_type: char
+    - name: lhdda1
+      description: "Detail data 1 - \u8A73\u7D30\u30C7\u30FC\u30BF1"
+      data_type: char
+    - name: lhdda2
+      description: "Detail data 2 - \u8A73\u7D30\u30C7\u30FC\u30BF2"
+      data_type: char
+    - name: lhspat
+      description: "Shop amount - \u5E97\u8217\u91D1\u984D"
+      data_type: decimal
+    - name: lhtaxm
+      description: "Tax amount - \u7A0E\u984D"
+      data_type: decimal
+    - name: lhaskm
+      description: "Ask amount - \u8ACB\u6C42\u984D"
+      data_type: decimal
+    - name: lhrsdt
+      description: "Reserve date - \u4E88\u7D04\u65E5"
+      data_type: numeric
+    - name: lhtaxh
+      description: "Tax hold - \u4E88\u7D04\u7A0E\u984D"
+      data_type: decimal
+    - name: lhrsam
+      description: "Reserve amount - \u4E88\u7D04\u91D1\u984D"
+      data_type: decimal
+    - name: lhslcd
+      description: "Sales code - \u58F2\u4E0A\u30B3\u30FC\u30C9"
+      data_type: numeric
+    - name: lhctax
+      description: "Customer tax - \u9867\u5BA2\u7A0E\u984D"
+      data_type: decimal
+    - name: lhchom
+      description: "Customer home amount - \u9867\u5BA2\u91D1\u984D\uFF08\u672C\u56FD\
+        \uFF09"
+      data_type: decimal
+    - name: lhtden
+      description: "Trade number - \u53D6\u5F15\u756A\u53F7"
+      data_type: char
+    - name: lhtded
+      description: "Trade date - \u53D6\u5F15\u65E5\u4ED8"
+      data_type: numeric
+    - name: lhrcrm
+      description: "Record amount - \u5E74\u5EA6\u53D6\u5F15\u91D1\u984D"
+      data_type: decimal
+    - name: lhdlkb
+      description: "Delete key - \u524A\u9664\u30AD\u30FC"
+      data_type: char
+    - name: lhodno
+      description: "Order number - \u6CE8\u6587\u756A\u53F7"
+      data_type: char
+    - name: lhkhst
+      description: "Key history code - \u30AD\u30FC\u5C65\u6B74\u30B3\u30FC\u30C9"
+      data_type: char
+    - name: lhnksf
+      description: "Net key flag - \u5E74\u5EA6\u30AD\u30FC\u30D5\u30E9\u30B0"
+      data_type: char
+    - name: lhspnk
+      description: "Shop number key - \u5E97\u8217\u756A\u53F7\u30AD\u30FC"
+      data_type: char
+    - name: lhnyuf
+      description: "Net year flag - \u5E74\u5EA6\u30D5\u30E9\u30B0"
+      data_type: char
+    - name: lhtaxf
+      description: "Tax flag - \u7A0E\u30D5\u30E9\u30B0"
+      data_type: char
+    - name: lhsefg
+      description: "Settlement flag - \u6C7A\u6E08\u30D5\u30E9\u30B0"
+      data_type: char
+    - name: lhsedt
+      description: "Settlement date - \u6C7A\u6E08\u65E5\u4ED8"
+      data_type: numeric
+    - name: lhhryu
+      description: "Hold reason - \u4FDD\u7559\u7406\u7531"
+      data_type: char
+    - name: lhdltf
+      description: "Delete flag - \u524A\u9664\u30D5\u30E9\u30B0"
+      data_type: char
+    - name: lhrldt
+      description: "Release date - \u89E3\u9664\u65E5"
+      data_type: numeric
+    - name: lhrltm
+      description: "Release time - \u89E3\u9664\u6642\u523B"
+      data_type: numeric
+    - name: lhrlur
+      description: "Release user - \u89E3\u9664\u30E6\u30FC\u30B6\u30FC"
+      data_type: char
+    - name: lhrlpg
+      description: "Release program - \u89E3\u9664\u30D7\u30ED\u30B0\u30E9\u30E0"
+      data_type: char
+    freshness:
+      warn_after:
+        count: 1
+        period: day
+      error_after:
+        count: 2
+        period: day
+    loaded_at_field: lhrldt
