@@ -1,145 +1,110 @@
--- Source: wf_DI_ITEM_MTRL_MASTER.XML
--- Staging model for material master data
--- Implements exp_PASS_THROUGH transformation logic
+-- Model: wf_di_item_mtrl_master_stg_material_master
+-- Merged from 2 chunks
 
-{{ config(
-    materialized='view',
-    tags=['staging', 'material_master']
-) }}
+select
+    product,
+    mater_grp_pckg_mater,
+    product_group,
+    weight_unit,
+    volume_unit,
+    material_volume,
+    size_or_dimension_text,
+    product_hierarchy,
+    product_old_id,
+    net_weight,
+    labdsgnoffc,
+    product_standard_id,
+    gross_weight,
+    item_category_group,
+    external_product_group,
+    division,
+    cross_plant_status_validity_date,
+    cross_plant_status,
+    international_article_number_cat,
+    authorization_group,
+    product_type,
+    industry_sector,
+    pgenumdocwitho_doc_manasys,
+    industry_standard_name,
+    docverwitho_doc_manasys,
+    doctypwitho_doc_manasys,
+    docchngenumwithodocumanasys,
+    cad_indicator,
+    basic_material,
+    pge_format_produc_memo,
+    indi_in_bulk_liquid,
+    indi_highly_viscous,
+    envrmt_relevant,
+    docnumwithodocmanagsys,
+    pack_code,
+    approved_batch_rec_req,
+    ttlshelflife,
+    temppcondindi,
+    strgperc,
+    strcond,
+    roundrlcal_sled,
+    hazardmatnum,
+    contnrreq,
+    prd_indi_exp_dt,
+    quant_grgiprnt,
+    min_rem_shelf,
+    label_type,
+    label_form,
+    serial_no_explicitness_level,
+    manufacturer_number,
+    varbl_pur_ord_unit_is_active,
+    purchng_val_key,
+    materqualdisckind,
+    purchase_order_quantity_unit,
+    manufacturer_part_profile,
+    product_manufacturer_number,
+    material_frieght_group,
+    created_by_user,
+    creation_date,
+    last_changed_by_user,
+    last_change_date,
+    base_unit,
+    danger_goods_ind,
+    is_batch_management_required,
+    disposable_ind,
+    expiry_ind,
+    sterile_ind,
+    serialized_ind,
+    maint_st,
+    commodity,
+    country_of_origin_material,
+    pvc_free_ind,
+    dehp_free_ind,
+    mercury_free_ind,
+    latex_ind,
+    hazardous_ind,
+    eccn_nbr,
+    pto_relevant,
+    pto_relevant_qnty,
+    ce_mark_ind,
+    fda_prod_cd,
+    dps_generic_lot,
+    dps_uom_qty,
+    rebox_id,
+    rework_ind,
+    hyp_cd,
+    hyp_brand_desc,
+    mtrl_thk_ind,
+    mtrl_thk_upr_limit,
+    mtrl_thk_lwr_limit,
+    mtrl_thk_msrmt,
+    pckg_matertyp,
+    handling_unit_type,
+    unit_specific_product_length,
+    unit_specific_product_width,
+    unit_specific_product_height,
+    product_measurement_unit,
+    shpng_rstrctn,
+    shpng_tmptr_ctrl_ind,
+    scrap_itm_ind,
+    rebox_ww_ind,
+    rebox_nw_ind,
+    instrmnt_ind,
+    is_marked_for_deletion
 
-with source_data as (
-    select * from {{ source('sap_source', 'material_master') }}
-),
-
-transformed as (
-    select
-        -- Product with trimming (LTRIM/RTRIM equivalent)
-        trim(Product) as product,
-        
-        -- Pass-through fields
-        MaterGrpPckgMater as material_group_packaging,
-        ProductGroup as product_group,
-        WeightUnit as weight_unit,
-        VolumeUnit as volume_unit,
-        MaterialVolume as material_volume,
-        SizeOrDimensionText as size_or_dimension_text,
-        ProductHierarchy as product_hierarchy,
-        ProductOldID as product_old_id,
-        NetWeight as net_weight,
-        Labdsgnoffc as lab_design_office,
-        ProductStandardID as product_standard_id,
-        GrossWeight as gross_weight,
-        ItemCategoryGroup as item_category_group,
-        ExternalProductGroup as external_product_group,
-        Division as division,
-        CrossPlantStatusValidityDate as cross_plant_status_validity_date,
-        CrossPlantStatus as cross_plant_status,
-        InternationalArticleNumberCat as international_article_number_cat,
-        AuthorizationGroup as authorization_group,
-        ProductType as product_type,
-        IndustrySector as industry_sector,
-        PgenumdocwithoDocManasys as page_num_doc_without_doc_mgmt_sys,
-        IndustryStandardName as industry_standard_name,
-        DocverwithoDocManasys as doc_version_without_doc_mgmt_sys,
-        DoctypwithoDocManasys as doc_type_without_doc_mgmt_sys,
-        Docchngenumwithodocumanasys as doc_change_num_without_doc_mgmt_sys,
-        
-        -- Boolean conversions using UDF equivalent
-        {{ boolean_to_string('in_CADIndicator') }} as cad_indicator,
-        
-        BasicMaterial as basic_material,
-        PgeFormatProducMemo as page_format_product_memo,
-        
-        -- More boolean conversions
-        {{ boolean_to_string('in_IndiInBulkLiquid') }} as indi_in_bulk_liquid,
-        {{ boolean_to_string('in_IndiHighlyViscous') }} as indi_highly_viscous,
-        {{ boolean_to_string('in_EnvrmtRelevant') }} as environment_relevant,
-        
-        Docnumwithodocmanagsys as doc_num_without_doc_mgmt_sys,
-        PackCode as pack_code,
-        
-        {{ boolean_to_string('in_ApprovedBatchRecReq') }} as approved_batch_rec_req,
-        
-        Ttlshelflife as total_shelf_life,
-        Temppcondindi as temp_condition_indicator,
-        Strgperc as storage_percentage,
-        Strcond as storage_condition,
-        RoundrlcalSLED as round_rule_calc_sled,
-        Hazardmatnum as hazard_material_number,
-        contnrreq as container_requirement,
-        PrdIndiExpDt as product_indi_exp_date,
-        QuantGrgiprnt as quantity_gross_imprint,
-        MinRemShelf as min_remaining_shelf,
-        LabelType as label_type,
-        LabelForm as label_form,
-        SerialNoExplicitnessLevel as serial_no_explicitness_level,
-        ManufacturerNumber as manufacturer_number,
-        VarblPurOrdUnitIsActive as variable_pur_ord_unit_is_active,
-        PurchngValKey as purchasing_value_key,
-        Materqualdisckind as material_quality_disc_kind,
-        PurchaseOrderQuantityUnit as purchase_order_quantity_unit,
-        ManufacturerPartProfile as manufacturer_part_profile,
-        ProductManufacturerNumber as product_manufacturer_number,
-        MaterialFrieghtGroup as material_freight_group,
-        CreatedByUser as created_by_user,
-        
-        -- DateTime combination logic
-        case 
-            when CreationDate is not null then
-                cast(
-                    substr(cast(CreationDate as string), 1, 10) || ' ' || 
-                    substr(cast(TimeOfCreation as string), 12, 8) 
-                    as timestamp
-                )
-            else null
-        end as creation_datetime,
-        
-        LastChangedByUser as last_changed_by_user,
-        
-        -- Last change datetime combination
-        cast(
-            substr(cast(LastChangeDate as string), 1, 10) || ' ' || 
-            substr(cast(LastChangeDateTime as string), 12, 8) 
-            as timestamp
-        ) as last_change_datetime,
-        
-        BaseUnit as base_unit,
-        
-        -- Batch management conversion
-        case 
-            when IsBatchManagementRequired = 1 then 'Y'
-            when IsBatchManagementRequired = 0 then 'N'
-            else null
-        end as is_batch_management_required,
-        
-        MaintSt as maintenance_status,
-        commodity as commodity,
-        CountryOfOriginMaterial as country_of_origin_material,
-        ProductDescription as product_description,
-        
-        -- Width conversion with decimal casting
-        cast(UnitSpecificProductWidth as decimal(13,3)) as unit_specific_product_width,
-        UnitSpecificProductLength as unit_specific_product_length,
-        UnitSpecificProductHeight as unit_specific_product_height,
-        
-        PckgMatertyp as packaging_material_type,
-        HandlingUnitType as handling_unit_type,
-        ProductMeasurementUnit as product_measurement_unit,
-        
-        -- Soft delete conversion
-        {{ soft_delete_conversion('IsMarkedForDeletion') }} as is_marked_for_deletion,
-        
-        -- Generate MD5 for change detection
-        {{ generate_md5_hash([
-            'trim(Product)', 'MaterGrpPckgMater', 'ProductGroup', 'WeightUnit',
-            'VolumeUnit', 'MaterialVolume', 'NetWeight', 'GrossWeight',
-            'BaseUnit', 'ProductDescription', 'LastChangedByUser'
-        ]) }} as source_md5_hash,
-        
-        current_timestamp() as dbt_loaded_at,
-        current_timestamp() as dbt_updated_at
-        
-    from source_data
-)
-
-select * from transformed
+from {{ source('sap_source', 'material_master') }}

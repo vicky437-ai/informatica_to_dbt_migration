@@ -1,4 +1,4 @@
-# DBT Project: dbt_my_dbt_project
+# DBT Project: dbt_root
 
 ## Overview
 This DBT project was automatically generated from Informatica PowerCenter XML workflows.
@@ -23,4 +23,4 @@ This project combines the following workflows:
 ## Model Mapping
 Each model is prefixed with its source workflow for clarity.
 
-Generated: 2025-09-26T05:21:23.310720
+Generated: 2025-09-29T08:34:33.197135

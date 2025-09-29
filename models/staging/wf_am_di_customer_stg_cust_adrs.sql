@@ -1,0 +1,48 @@
+-- Source: wf_AM_DI_CUSTOMER.XML
+-- Staging model for customer address data
+-- Source: STG_MDG_CUST.CUST_ADRS
+
+select
+    adrs_nbr,
+    vld_frm_dt,
+    adrs_vrsn_id,
+    title,
+    vld_to_dt,
+    cust_nbr,
+    name_1,
+    name_2,
+    name_3,
+    name_4,
+    conv_name,
+    care_of_name,
+    city,
+    district,
+    city_cd,
+    county,
+    county_cd,
+    fax_extens,
+    bldg_cd,
+    cntry_key,
+    cmnctn_mthd,
+    fax_nbr,
+    house_nbr_1,
+    house_nbr_2,
+    lang_key,
+    strt_1,
+    strt_2,
+    strt_3,
+    strt_4,
+    strt_5,
+    po_box,
+    po_cd,
+    region_key,
+    srch_term_1,
+    srch_term_2,
+    tax_jdx,
+    time_zone,
+    trans_zone,
+    tel_nbr,
+    tel_extens,
+    etl_load_dt
+
+from {{ source('stg_mdg_cust', 'cust_adrs') }}

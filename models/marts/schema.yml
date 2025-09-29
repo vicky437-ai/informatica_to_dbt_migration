@@ -1,0 +1,156 @@
+# From wf_AP_FF_CITIBANK_VCA.XML
+version: 2
+
+models:
+  - name: fct_ap_citibank_vca_export
+    description: "Fact table for Citibank VCA flat file export data"
+    columns:
+  - name: recordid
+        description: "Unique record identifier"
+        tests:
+  - not_null
+  - unique
+  - name: actiontype
+        description: "Type of action to be performed"
+        tests:
+  - not_null
+  - name: issuerid
+        description: "Issuer identification"
+        tests:
+  - not_null
+  - name: validfrom
+        description: "Formatted valid from date with timezone"
+        tests:
+  - not_null
+  - name: validto
+        description: "Formatted valid to date with timezone"
+        tests:
+  - not_null
+  - name: filename
+        description: "Generated output filename with timestamp"
+        tests:
+  - not_null
+  - name: export_timestamp
+        description: "Timestamp when record was processed for export"
+        tests:
+  - not_null
+# --- From wf_FF_AT_Z1_GL_ACCOUNT.XML ---
+
+  - name: fct_ff_at_z1_gl_account
+    description: "Fact table containing GL account transaction data for Appito export (replaces flat file FF_AT_Z1_GL_ACCOUNT)"
+    columns:
+  - name: posting_date
+        description: "Posting date in the document"
+        tests:
+  - not_null
+  - name: fiscal_year
+        description: "Fiscal year"
+        tests:
+  - not_null
+  - name: fiscal_period
+        description: "Fiscal period"
+  - name: doc_num
+        description: "Accounting document number"
+        tests:
+  - not_null
+  - name: doc_line
+        description: "Line item number within accounting document"
+  - name: journal_line_description
+        description: "Item text description"
+  - name: account
+        description: "GL account number"
+        tests:
+  - not_null
+  - name: account_description
+        description: "GL account long name"
+  - name: cost_center
+        description: "Cost center"
+  - name: company_code
+        description: "Company code"
+        tests:
+  - not_null
+  - name: vendor_id
+        description: "Vendor or creditor account number"
+  - name: vendor_name
+        description: "Supplier full name"
+  - name: purchase_order
+        description: "Purchasing document number"
+  - name: invoice
+        description: "Invoice reference"
+  - name: amount_in_document_currency
+        description: "Amount in document currency"
+  - name: currency_code_document
+        description: "Document currency code"
+  - name: amount_in_local_currency
+        description: "Amount in local currency"
+  - name: currency_code_local
+        description: "Local currency code"
+  - name: source_erp
+        description: "Source ERP system description"
+  - name: wbs
+        description: "Work breakdown structure"
+  - name: project_definition
+        description: "Project definition"
+  - name: document_type
+        description: "Document type"
+# --- From wf_FF_AT_ZJ_GL_ACCOUNT.XML ---
+
+  - name: fct_at_zj_gl_account
+    description: "Fact table for GL Account transactions exported to flat file FF_AT_ZJ_GL_ACCOUNT"
+    columns:
+  - name: account
+        description: "GL Account number"
+        tests:
+  - not_null
+  - name: cost_center
+        description: "Cost Center"
+  - name: journal_id
+        description: "Journal/Document ID"
+        tests:
+  - not_null
+  - name: document_type
+        description: "Document Type"
+  - name: journal_line_id
+        description: "Journal Line ID"
+        tests:
+  - not_null
+  - name: vendor_id
+        description: "Vendor ID"
+  - name: vendor_name
+        description: "Vendor Name"
+  - name: account_description
+        description: "Account Description"
+  - name: currency_code_base
+        description: "Base Currency Code"
+  - name: currency_code_from
+        description: "From Currency Code"
+  - name: journal_line_description
+        description: "Journal Line Description (cleaned of double quotes)"
+  - name: remark_explanation
+        description: "Remark/Explanation (cleaned and truncated to 30 chars)"
+  - name: subledger_gl
+        description: "Subledger G/L reference"
+  - name: purchase_order
+        description: "Purchase Order number"
+  - name: supplier_invoice
+        description: "Supplier Invoice number"
+  - name: posting_date
+        description: "Posting Date in YYYYMMDD format"
+        tests:
+  - not_null
+  - name: fiscal_year_period
+        description: "Fiscal Year/Period"
+  - name: source_erp
+        description: "Source ERP system description"
+  - name: amount
+        description: "Transaction amount (truncated to 3 decimal places)"
+        tests:
+  - not_null
+  - name: local_amount
+        description: "Local currency amount (truncated to 3 decimal places)"
+        tests:
+  - not_null
+  - name: dbt_created_at
+        description: "Record creation timestamp"
+  - name: dbt_updated_at
+        description: "Record last update timestamp"

@@ -1,153 +1,2150 @@
+# From wf_AM_DI_CUSTOMER.XML
 version: 2
+
 models:
-- name: stg_bpcs_arurhd
-  description: Staging model for BPCS ARURHD (Accounts Receivable Header) - Japan
-    BPCS system
-  columns:
-  - name: lhspcd
-    description: "Shop code - \u5E97\u8217\u30B3\u30FC\u30C9"
-    data_type: number
-    tests:
-    - not_null
-  - name: lhspno
-    description: "Shop number - \u5E97\u8217\u756A\u53F7"
-    data_type: varchar2
-    tests:
-    - not_null
-  - name: lhsptk
-    description: "Shop type code - \u5E97\u8217\u7A2E\u5225\u30B3\u30FC\u30C9"
-    data_type: varchar2
-  - name: lhtrbk
-    description: "Transaction book code - \u53D6\u5F15\u5E33\u7C3F\u30B3\u30FC\u30C9"
-    data_type: varchar2
-  - name: lhegcd
-    description: "Entry code - \u5165\u529B\u30B3\u30FC\u30C9"
-    data_type: varchar2
-  - name: lhedsq
-    description: "Entry sequence number - \u5165\u529B\u9806\u5E8F\u756A\u53F7"
-    data_type: number
-  - name: lhcscd
-    description: "Customer code - \u9867\u5BA2\u30B3\u30FC\u30C9"
-    data_type: varchar2
-  - name: lhhpcd
-    description: "Ship-to code - \u914D\u9001\u5148\u30B3\u30FC\u30C9"
-    data_type: varchar2
-  - name: lhsptp
-    description: "Shop type - \u5E97\u8217\u30BF\u30A4\u30D7"
-    data_type: varchar2
-  - name: lhtacd
-    description: "Tax code - \u7A0E\u52D9\u30B3\u30FC\u30C9"
-    data_type: varchar2
-  - name: lhspnd
-    description: "Suspend date - \u4FDD\u7559\u65E5\u4ED8"
-    data_type: number
-  - name: lhnyyd
-    description: "Net year date - \u5E74\u5EA6\u65E5\u4ED8"
-    data_type: number
-  - name: lhrcdt
-    description: "Record date - \u5E74\u5EA6\u65E5\u4ED8"
-    data_type: number
-  - name: lhpayk
-    description: "Payment key - \u652F\u6255\u30AD\u30FC"
-    data_type: varchar2
-  - name: lhdda1
-    description: "Detail data 1 - \u8A73\u7D30\u30C7\u30FC\u30BF1"
-    data_type: varchar2
-  - name: lhdda2
-    description: "Detail data 2 - \u8A73\u7D30\u30C7\u30FC\u30BF2"
-    data_type: varchar2
-  - name: lhspat
-    description: "Shop amount - \u5E97\u8217\u91D1\u984D"
-    data_type: number
-  - name: lhtaxm
-    description: "Tax amount - \u7A0E\u984D"
-    data_type: number
-  - name: lhaskm
-    description: "Ask amount - \u8ACB\u6C42\u984D"
-    data_type: number
-  - name: lhrsdt
-    description: "Reserve date - \u4E88\u7D04\u65E5"
-    data_type: number
-  - name: lhtaxh
-    description: "Tax hold - \u4E88\u7D04\u7A0E\u984D"
-    data_type: number
-  - name: lhrsam
-    description: "Reserve amount - \u4E88\u7D04\u91D1\u984D"
-    data_type: number
-  - name: lhslcd
-    description: "Sales code - \u58F2\u4E0A\u30B3\u30FC\u30C9"
-    data_type: number
-  - name: lhctax
-    description: "Customer tax - \u9867\u5BA2\u7A0E\u984D"
-    data_type: number
-  - name: lhchom
-    description: "Customer home amount - \u9867\u5BA2\u91D1\u984D\uFF08\u672C\u56FD\
-      \uFF09"
-    data_type: number
-  - name: lhtden
-    description: "Trade number - \u53D6\u5F15\u756A\u53F7"
-    data_type: varchar2
-  - name: lhtded
-    description: "Trade date - \u53D6\u5F15\u65E5\u4ED8"
-    data_type: number
-  - name: lhrcrm
-    description: "Record amount - \u5E74\u5EA6\u53D6\u5F15\u91D1\u984D"
-    data_type: number
-  - name: lhdlkb
-    description: "Delete key - \u524A\u9664\u30AD\u30FC"
-    data_type: varchar2
-  - name: lhodno
-    description: "Order number - \u6CE8\u6587\u756A\u53F7"
-    data_type: varchar2
-  - name: lhkhst
-    description: "Key history code - \u30AD\u30FC\u5C65\u6B74\u30B3\u30FC\u30C9"
-    data_type: varchar2
-  - name: lhnksf
-    description: "Net key flag - \u5E74\u5EA6\u30AD\u30FC\u30D5\u30E9\u30B0"
-    data_type: varchar2
-  - name: lhspnk
-    description: "Shop number key - \u5E97\u8217\u756A\u53F7\u30AD\u30FC"
-    data_type: varchar2
-  - name: lhnyuf
-    description: "Net year flag - \u5E74\u5EA6\u30D5\u30E9\u30B0"
-    data_type: varchar2
-  - name: lhtaxf
-    description: "Tax flag - \u7A0E\u30D5\u30E9\u30B0"
-    data_type: varchar2
-  - name: lhsefg
-    description: "Settlement flag - \u6C7A\u6E08\u30D5\u30E9\u30B0"
-    data_type: varchar2
-  - name: lhsedt
-    description: "Settlement date - \u6C7A\u6E08\u65E5\u4ED8"
-    data_type: number
-  - name: lhhryu
-    description: "Hold reason - \u4FDD\u7559\u7406\u7531"
-    data_type: varchar2
-  - name: lhdltf
-    description: "Delete flag - \u524A\u9664\u30D5\u30E9\u30B0"
-    data_type: varchar2
-  - name: lhrldt
-    description: "Release date - \u89E3\u9664\u65E5"
-    data_type: number
-  - name: lhrltm
-    description: "Release time - \u89E3\u9664\u6642\u523B"
-    data_type: number
-  - name: lhrlur
-    description: "Release user - \u89E3\u9664\u30E6\u30FC\u30B6\u30FC"
-    data_type: varchar2
-  - name: lhrlpg
-    description: "Release program - \u89E3\u9664\u30D7\u30ED\u30B0\u30E9\u30E0"
-    data_type: varchar2
+  - name: stg_cust_master
+    description: "Staging model for customer master data"
+    columns:
+  - name: cust_nbr
+        description: "Customer number"
+        tests:
+  - not_null
+  - unique
+  - name: cntry_key
+        description: "Country key"
+  - name: city
+        description: "City name"
+  - name: po_cd
+        description: "Postal code"
+  - name: region_key
+        description: "Region key"
+  - name: street
+        description: "Street address"
+  - name: attribute_9
+        description: "Attribute 9 - customer classification"
+  - name: central_ordr_blk
+        description: "Central order block indicator"
+  - name: etl_load_dt
+        description: "ETL load timestamp"
+
+  - name: stg_ptnr_fctn
+    description: "Staging model for partner function data"
+    columns:
+  - name: cust_nbr
+        description: "Customer number"
+        tests:
+  - not_null
+  - name: sales_org_id
+        description: "Sales organization ID"
+  - name: dstrbtn_chnl
+        description: "Distribution channel"
+  - name: division
+        description: "Division"
+  - name: ptnr_fctn_id
+        description: "Partner function ID"
+  - name: ptnr_cntr
+        description: "Partner counter"
+  - name: ptnr_cust_nbr
+        description: "Partner customer number"
+  - name: etl_load_dt
+        description: "ETL load timestamp"
+
+  - name: stg_cust_adrs
+    description: "Staging model for customer address data"
+    columns:
+  - name: adrs_nbr
+        description: "Address number"
+        tests:
+  - not_null
+  - name: vld_frm_dt
+        description: "Valid from date"
+        tests:
+  - not_null
+  - name: cust_nbr
+        description: "Customer number"
+  - name: name_1
+        description: "Primary name"
+  - name: city
+        description: "City name"
+  - name: region_key
+        description: "Region key"
+  - name: po_cd
+        description: "Postal code"
+  - name: strt_1
+        description: "Street line 1"
+  - name: strt_2
+        description: "Street line 2"
+  - name: strt_3
+        description: "Street line 3"
+  - name: etl_load_dt
+        description: "ETL load timestamp"
+# --- From wf_AP_FF_CITIBANK_VCA.XML ---
+
+  - name: stg_t_ap_citibank_vca
+    description: "Staging model for Citibank VCA data"
+    columns:
+  - name: record_id
+        description: "Unique record identifier"
+        tests:
+  - not_null
+  - unique
+  - name: action_type
+        description: "Type of action to be performed"
+        tests:
+  - not_null
+  - name: issuer_id
+        description: "Issuer identification"
+        tests:
+  - not_null
+  - name: valid_from
+        description: "Valid from date"
+        tests:
+  - not_null
+  - name: valid_to
+        description: "Valid to date"
+        tests:
+  - not_null
   - name: etl_load_dte
-    description: ETL load timestamp - when record was loaded into staging
-    data_type: timestamp
-    tests:
-    - not_null
-  tests:
-  - dbt_utils.unique_combination_of_columns:
-      combination_of_columns:
-      - lhspcd
-      - lhspno
-      - lhsptk
-      - lhegcd
-      - lhedsq
+        description: "ETL load timestamp"
+        tests:
+  - not_null
+# --- From wf_BL_FF_ZJ_JOURNALS.XML ---
+
+  - name: stg_f0011
+    description: "Staging model for F0011 Account Balances"
+    columns:
+  - name: icicu
+        description: "Batch number"
+        tests:
+  - not_null
+  - name: icicut
+        description: "Batch type"
+  - name: icame
+        description: "Amount entered"
+  - name: icist
+        description: "Batch status"
+
+  - name: stg_f0911
+    description: "Staging model for F0911 Account Ledger"
+    columns:
+  - name: glicu
+        description: "Batch number"
+        tests:
+  - not_null
+  - name: gldct
+        description: "Document type"
+        tests:
+  - not_null
+  - name: gldoc
+        description: "Document number"
+        tests:
+  - not_null
+  - name: glkco
+        description: "Company"
+        tests:
+  - not_null
+  - name: gllt
+        description: "Ledger type"
+        tests:
+  - not_null
+  - name: gljeln
+        description: "Journal entry line number"
+        tests:
+  - not_null
+  - name: glpost
+        description: "Posted code"
+
+  - name: stg_f0901
+    description: "Staging model for F0901 Account Master"
+    columns:
+  - name: gmaid
+        description: "Account ID"
+        tests:
+  - not_null
+  - unique
+  - name: gmdl01
+        description: "Account description"
+
+  - name: stg_f0092
+    description: "Staging model for F0092 User Profile"
+    columns:
+  - name: uluser
+        description: "User ID"
+        tests:
+  - not_null
+  - name: ulan8
+        description: "Address number"
+
+  - name: stg_f01151
+    description: "Staging model for F01151 Electronic Address"
+    columns:
+  - name: eaan8
+        description: "Address number"
+        tests:
+  - not_null
+  - name: eaetp
+        description: "Electronic address type"
+  - name: eaemal
+        description: "Email address"
+
+  - name: stg_s_zj_journals
+    description: "Staging model for S_ZJ_JOURNALS"
+    columns:
+  - name: f0911_gldct
+        description: "Document type"
+  - name: f0911_gldoc
+        description: "Document number"
+  - name: f0911_glkco
+        description: "Company"
+  - name: f0911_gllt
+        description: "Ledger type"
+  - name: f0911_gljeln
+        description: "Journal entry line number"
+
+  - name: stg_ff_bl_zj_journals_src
+    description: "Staging model for FF_BL_ZJ_JOURNALS_SRC"
+    columns:
+  - name: batch_number
+        description: "Batch number"
+  - name: document_type
+        description: "Document type"
+  - name: document_number
+        description: "Document number"
+# --- Chunk 3 ---
+
+  - name: stg_f0011
+    description: "Staging model for JDE Address Book"
+    columns:
+  - name: address_number
+        description: "Address Number"
+        tests:
+  - not_null
+  - name: alphabetic_name
+        description: "Alphabetic Name"
+  - name: category_code_01
+        description: "Category Code 01"
+  - name: category_code_02
+        description: "Category Code 02"
+  - name: category_code_03
+        description: "Category Code 03"
+
+  - name: stg_f0911
+    description: "Staging model for JDE Account Ledger"
+    columns:
+  - name: ledger_id
+        description: "Ledger ID"
+  - name: company
+        description: "Company"
+        tests:
+  - not_null
+  - name: object_account
+        description: "Object Account"
+  - name: subsidiary
+        description: "Subsidiary"
+  - name: document_type
+        description: "Document Type"
+  - name: document_number
+        description: "Document Number"
+  - name: document_company
+        description: "Document Company"
+  - name: journal_line_number
+        description: "Journal Entry Line Number"
+  - name: post_edit_code
+        description: "Post Edit Code"
+  - name: amount
+        description: "Amount"
+  - name: currency_code
+        description: "Currency Code"
+  - name: gl_date
+        description: "Date - G/L"
+  - name: journal_date
+        description: "Date - Journal Entry"
+  - name: origin
+        description: "Origin"
+  - name: user_id
+        description: "User ID"
+  - name: program_id
+        description: "Program ID"
+  - name: updated_date
+        description: "Date - Updated"
+  - name: updated_time
+        description: "Time - Last Updated"
+
+  - name: stg_f0901
+    description: "Staging model for JDE Account Master"
+    columns:
+  - name: company
+        description: "Company"
+        tests:
+  - not_null
+  - name: object_account
+        description: "Object Account"
+  - name: subsidiary
+        description: "Subsidiary"
+  - name: ledger_type
+        description: "Ledger Type"
+  - name: description_line_1
+        description: "Description Line 1"
+  - name: description_line_2
+        description: "Description Line 2"
+  - name: posting_edit
+        description: "Posting Edit"
+
+  - name: stg_f01151
+    description: "Staging model for JDE Company Constants"
+    columns:
+  - name: company
+        description: "Company"
+        tests:
+  - not_null
+  - unique
+  - name: description_line_1
+        description: "Description Line 1"
+  - name: currency_code
+        description: "Currency Code"
+  - name: fiscal_year
+        description: "Fiscal Year"
+
+  - name: stg_f0092
+    description: "Staging model for JDE User Defined Codes"
+    columns:
+  - name: system_code
+        description: "System Code"
+        tests:
+  - not_null
+  - name: record_type
+        description: "Record Type"
+        tests:
+  - not_null
+  - name: user_defined_code
+        description: "User Defined Code"
+        tests:
+  - not_null
+  - name: description_01
+        description: "Description 01"
+  - name: description_02
+        description: "Description 02"
+
+  - name: stg_s_zj_journals
+    description: "Staging model for ZJ Journals staging table"
+    columns:
+  - name: company
+        description: "Company code"
+  - name: object_account
+        description: "Object account"
+  - name: subsidiary
+        description: "Subsidiary"
+  - name: document_type
+        description: "Document type"
+  - name: document_number
+        description: "Document number"
+  - name: journal_line_number
+        description: "Journal entry line number"
+  - name: amount
+        description: "Transaction amount"
+  - name: currency_code
+        description: "Currency code"
+  - name: gl_date
+        description: "General ledger date"
+  - name: journal_date
+        description: "Journal entry date"
+  - name: origin
+        description: "Transaction origin"
+  - name: user_id
+        description: "User ID"
+  - name: program_id
+        description: "Program ID"
+  - name: updated_date
+        description: "Last updated date"
+  - name: updated_time
+        description: "Last updated time"
+
+  - name: stg_ff_bl_zj_journals_src
+    description: "Staging model for Blackline ZJ Journals source file"
+    columns:
+  - name: filename
+        description: "Source filename"
+# --- From wf_BL_FF_ZJ_JOURNALS_STG.XML ---
+
+  - name: stg_f0901
+    description: "Staging model for Account Master"
+    columns:
+  - name: gmaid
+        description: "Account ID"
+        tests:
+  - not_null
+  - unique
+  - name: gmco
+        description: "Company"
+  - name: gmdl01
+        description: "Description Line 1"
+        
+  - name: stg_f0911
+    description: "Staging model for Account Ledger"
+    columns:
+  - name: glkco
+        description: "Company"
+        tests:
+  - not_null
+  - name: gldct
+        description: "Document Type"
+        tests:
+  - not_null
+  - name: gldoc
+        description: "Document Number"
+        tests:
+  - not_null
+  - name: gljeln
+        description: "Journal Entry Line Number"
+        tests:
+  - not_null
+  - name: gllt
+        description: "Ledger Type"
+        tests:
+  - not_null
+        
+  - name: stg_f0011
+    description: "Staging model for Currency Master"
+    columns:
+  - name: icicut
+        description: "Currency Type"
+        tests:
+  - not_null
+  - name: icicu
+        description: "Currency"
+        tests:
+  - not_null
+# --- Chunk 2 ---
+
+  - name: stg_f0911
+    description: "Staging model for F0911 general ledger transactions"
+    columns:
+  - name: glkco
+        description: "Company code"
+        tests:
+  - not_null
+  - name: gldct
+        description: "Document type"
+        tests:
+  - not_null
+  - name: gldoc
+        description: "Document number"
+        tests:
+  - not_null
+  - name: gljeln
+        description: "Journal entry line number"
+        tests:
+  - not_null
+  - name: gllt
+        description: "Ledger type"
+        tests:
+  - not_null
+  - name: glre
+        description: "Reversal flag"
+        tests:
+  - accepted_values:
+              values: ['R', 'N', '']
+
+  - name: stg_f0901
+    description: "Staging model for F0901 account master"
+    columns:
+  - name: gmaid
+        description: "Account ID"
+        tests:
+  - not_null
+  - unique
+
+  - name: stg_f0011
+    description: "Staging model for F0011 item cost"
+    columns:
+  - name: icicu
+        description: "Currency code"
+  - name: icame
+        description: "Amount"
+
+  - name: stg_s_zj_journals
+    description: "Staging model for ZJ journals staging table"
+    columns:
+  - name: gldct
+        description: "Document type"
+  - name: gldoc
+        description: "Document number"
+  - name: glkco
+        description: "Company code"
+# --- Chunk 3 ---
+
+  - name: stg_f0911_journals
+    description: "Staged journal entries from F0911"
+    columns:
+  - name: glicu
+        description: "Item Company"
+        tests:
+  - not_null
+  - name: gldoc
+        description: "Document Number"
+        tests:
+  - not_null
+  - name: glkco
+        description: "Key Company"
+        tests:
+  - not_null
+  - name: glpost
+        description: "Post Status"
+        tests:
+  - accepted_values:
+              values: ['P', 'U', 'N']
+
+  - name: stg_f0092_users
+    description: "Staged user master from F0092"
+    columns:
+  - name: uluser
+        description: "User ID"
+        tests:
+  - not_null
+  - unique
+  - name: ulan8
+        description: "Address Number"
+
+  - name: stg_f01151_electronic_address
+    description: "Staged electronic addresses from F01151"
+    columns:
+  - name: eaan8
+        description: "Address Number"
+        tests:
+  - not_null
+  - name: eaemal
+        description: "Electronic Mail Address"
+# --- Chunk 4 ---
+
+  - name: stg_f0911_journals
+    description: "Staging model for F0911 journal entries"
+    columns:
+  - name: glkco
+        description: "Company code"
+        tests:
+  - not_null
+  - name: gldct
+        description: "Document type"
+        tests:
+  - not_null
+  - name: gldoc
+        description: "Document number"
+        tests:
+  - not_null
+  - name: gljeln
+        description: "Journal entry line number"
+        tests:
+  - not_null
+  - name: gllt
+        description: "Ledger type"
+        tests:
+  - not_null
+  - name: glpost
+        description: "Post status"
+        tests:
+  - accepted_values:
+              values: ['P', 'N', 'Y']
+  - name: etl_load_dte
+        description: "ETL load date"
+        tests:
+  - not_null
+
+  - name: stg_s_zj_journals
+    description: "Staging model for existing ZJ journals staging table"
+    columns:
+  - name: f0911_gldct
+        description: "Document type from F0911"
+  - name: f0911_gldoc
+        description: "Document number from F0911"
+  - name: f0911_glkco
+        description: "Company code from F0911"
+  - name: f0911_gllt
+        description: "Ledger type from F0911"
+  - name: f0911_gljeln
+        description: "Journal entry line number from F0911"
+# --- Chunk 5 ---
+
+  - name: stg_f0911
+    description: "Staged F0911 General Ledger Account Balances"
+    columns:
+  - name: glkco
+        description: "Company code"
+        tests:
+  - not_null
+  - name: gldct
+        description: "Document type"
+        tests:
+  - not_null
+  - name: gldoc
+        description: "Document number"
+        tests:
+  - not_null
+  - name: gljeln
+        description: "Journal entry line number"
+        tests:
+  - not_null
+  - name: gllt
+        description: "Ledger type"
+  - name: glre
+        description: "Reversal flag"
+  - name: glaa
+        description: "Amount"
+  - name: gldgj
+        description: "Date - G/L"
+
+  - name: stg_s_zj_journals
+    description: "Staged S_ZJ_JOURNALS staging table"
+    columns:
+  - name: glkco
+        description: "Company code"
+        tests:
+  - not_null
+  - name: gldct
+        description: "Document type"
+        tests:
+  - not_null
+  - name: gldoc
+        description: "Document number"
+        tests:
+  - not_null
+  - name: gljeln
+        description: "Journal entry line number"
+        tests:
+  - not_null
+  - name: gllt
+        description: "Ledger type"
+# --- Chunk 6 ---
+
+  - name: stg_f0901
+    description: "Staging model for F0901 Account Balances"
+    columns:
+  - name: gmaid
+        description: "Account ID"
+        tests:
+  - not_null
+  - name: gmdl01
+        description: "Account Description"
+  - name: gmco
+        description: "Company"
+
+  - name: stg_f0911
+    description: "Staging model for F0911 Account Ledger"
+    columns:
+  - name: glicu
+        description: "Batch Number"
+        tests:
+  - not_null
+  - name: gldct
+        description: "Document Type"
+        tests:
+  - not_null
+  - name: gldoc
+        description: "Document Number"
+        tests:
+  - not_null
+  - name: glkco
+        description: "Document Company"
+        tests:
+  - not_null
+  - name: gljeln
+        description: "Journal Entry Line Number"
+        tests:
+  - not_null
+
+  - name: stg_f0011
+    description: "Staging model for F0011 Account Master"
+    columns:
+  - name: icicu
+        description: "Batch Number"
+        tests:
+  - not_null
+
+  - name: stg_f0092
+    description: "Staging model for F0092 User Profile"
+    columns:
+  - name: uluser
+        description: "User ID"
+        tests:
+  - not_null
+  - unique
+
+  - name: stg_f01151
+    description: "Staging model for F01151 Electronic Address"
+    columns:
+  - name: eaan8
+        description: "Address Number"
+        tests:
+  - not_null
+
+  - name: stg_s_zj_journals
+    description: "Staging model for existing ZJ Journals staging table"
+    columns:
+  - name: f0911_gldct
+        description: "Document Type"
+  - name: f0911_gldoc
+        description: "Document Number"
+  - name: f0911_glkco
+        description: "Document Company"
+  - name: f0911_gljeln
+        description: "Journal Entry Line Number"
+  - name: f0911_gllt
+        description: "Ledger Type"
+# --- Chunk 7 ---
+
+  - name: stg_f0011
+    description: "Staging model for Company Constants"
+    columns:
+  - name: icicu
+        description: "Company code"
+        tests:
+  - not_null
+  - name: icist
+        description: "Status code"
+  - name: icicut
+        description: "Cut-off date"
+  - name: icame
+        description: "Amount"
+
+  - name: stg_f0911_r
+    description: "Staging model for Account Ledger - Revaluation records"
+    columns:
+  - name: glkco
+        description: "Company code"
+        tests:
+  - not_null
+  - name: gldct
+        description: "Document type"
+  - name: gldoc
+        description: "Document number"
+  - name: gldgj
+        description: "G/L date"
+
+  - name: stg_f0911_nr
+    description: "Staging model for Account Ledger - Non-revaluation records"
+    columns:
+  - name: glkco
+        description: "Company code"
+        tests:
+  - not_null
+  - name: gldct
+        description: "Document type"
+  - name: gldoc
+        description: "Document number"
+  - name: gldgj
+        description: "G/L date"
+
+  - name: stg_f0901
+    description: "Staging model for Account Master"
+    columns:
+  - name: gmaid
+        description: "Account ID"
+        tests:
+  - not_null
+  - unique
+  - name: gmdl01
+        description: "Description line 1"
+
+  - name: stg_f0092
+    description: "Staging model for User Defined Codes"
+    columns:
+  - name: ulan8
+        description: "Language code"
+
+  - name: stg_f01151
+    description: "Staging model for Electronic Address Master"
+    columns:
+  - name: eaetp
+        description: "Electronic address type"
+  - name: eaemal
+        description: "Electronic mail address"
+# --- Chunk 8 ---
+
+  - name: stg_jde_journals
+    description: "Staging model for JDE journal entries"
+    columns:
+  - name: glkco
+        description: "Company code"
+        tests:
+  - not_null
+  - name: gldct
+        description: "Document type"
+        tests:
+  - not_null
+  - name: gldoc
+        description: "Document number"
+        tests:
+  - not_null
+  - name: gldgj
+        description: "Date - G/L"
+  - name: gljeln
+        description: "Journal entry line number"
+        tests:
+  - not_null
+  - name: gllt
+        description: "Ledger type"
+  - name: glaa
+        description: "Account number"
+  - name: glsbl
+        description: "Subledger"
+  - name: glsblt
+        description: "Subledger type"
+  - name: glcrcd
+        description: "Currency code"
+  - name: glre
+        description: "Remark"
+  - name: glexa
+        description: "Exchange amount"
+  - name: glexr
+        description: "Exchange rate"
+  - name: glasid
+        description: "Asset ID"
+  - name: glrcnd
+        description: "Reconciled"
+  - name: glpo
+        description: "Post edit code"
+  - name: gluser
+        description: "User ID"
+  - name: glupmj
+        description: "Date - updated"
+  - name: glupmt
+        description: "Time - updated"
+  - name: glcrrm
+        description: "Currency rate method"
+  - name: gldicj
+        description: "Date - invoice"
+  - name: gltorg
+        description: "Transaction originator"
+  - name: glextl
+        description: "Extended line"
+  - name: glpost
+        description: "Post status"
+  - name: glco
+        description: "Company"
+  - name: glani
+        description: "Automatic numbering ID"
+  - name: glicu
+        description: "Item currency"
+  - name: glicut
+        description: "Item currency type"
+  - name: icist
+        description: "Item status"
+  - name: icame
+        description: "Item amount"
+  - name: gmdl01
+        description: "Model 01"
+
+  - name: stg_zj_journals_lookup
+    description: "Staging model for ZJ journals lookup table"
+    columns:
+  - name: f0911_gldct
+        description: "F0911 document type"
+  - name: f0911_gldoc
+        description: "F0911 document number"
+  - name: f0911_glkco
+        description: "F0911 company code"
+  - name: f0911_gllt
+        description: "F0911 ledger type"
+  - name: f0911_gljeln
+        description: "F0911 journal entry line number"
+# --- Chunk 9 ---
+
+  - name: stg_f0011_r
+    description: "Staging model for F0011 Address Book Master (R pipeline)"
+    columns:
+  - name: address_number
+        description: "Address Number"
+        tests:
+  - not_null
+  - name: alphabetic_name
+        description: "Alphabetic Name"
+  - name: category_codes
+        description: "Combined category codes"
+
+  - name: stg_f0011_nr
+    description: "Staging model for F0011 Address Book Master (NR pipeline)"
+    columns:
+  - name: address_number
+        description: "Address Number"
+        tests:
+  - not_null
+  - name: alphabetic_name
+        description: "Alphabetic Name"
+  - name: category_codes
+        description: "Combined category codes"
+
+  - name: stg_f0911_r
+    description: "Staging model for F0911 Account Ledger (R pipeline)"
+    columns:
+  - name: accounting_id
+        description: "Accounting ID"
+        tests:
+  - not_null
+  - name: company
+        description: "Company"
+  - name: gl_date
+        description: "GL Date"
+  - name: document_number
+        description: "Document Number"
+  - name: posted_code
+        description: "Posted Code"
+
+  - name: stg_f0911_nr
+    description: "Staging model for F0911 Account Ledger (NR pipeline)"
+    columns:
+  - name: accounting_id
+        description: "Accounting ID"
+        tests:
+  - not_null
+  - name: company
+        description: "Company"
+  - name: gl_date
+        description: "GL Date"
+  - name: document_number
+        description: "Document Number"
+  - name: posted_code
+        description: "Posted Code"
+
+  - name: stg_f0901_r
+    description: "Staging model for F0901 Account Master (R pipeline)"
+    columns:
+  - name: accounting_id
+        description: "Accounting ID"
+        tests:
+  - not_null
+  - name: company
+        description: "Company"
+  - name: object_account
+        description: "Object Account"
+  - name: description_line_1
+        description: "Description Line 1"
+
+  - name: stg_f0901_nr
+    description: "Staging model for F0901 Account Master (NR pipeline)"
+    columns:
+  - name: accounting_id
+        description: "Accounting ID"
+        tests:
+  - not_null
+  - name: company
+        description: "Company"
+  - name: object_account
+        description: "Object Account"
+  - name: description_line_1
+        description: "Description Line 1"
+
+  - name: stg_f0092
+    description: "Staging model for F0092 Currency Exchange Rates"
+    columns:
+  - name: currency_code_from
+        description: "Currency Code From"
+        tests:
+  - not_null
+  - name: exchange_rate
+        description: "Exchange Rate"
+  - name: effective_date
+        description: "Effective Date"
+
+  - name: stg_f01151
+    description: "Staging model for F01151 Business Unit Master"
+    columns:
+  - name: business_unit
+        description: "Business Unit"
+        tests:
+  - not_null
+  - name: description
+        description: "Description"
+  - name: category_code
+        description: "Category Code"
+
+  - name: stg_s_zj_journals
+    description: "Staging model for S_ZJ_JOURNALS staging table"
+    columns:
+  - name: journal_id
+        description: "Journal ID"
+        tests:
+  - unique
+  - not_null
+  - name: company
+        description: "Company Code"
+  - name: gl_date
+        description: "GL Date"
+  - name: posted_flag
+        description: "Posted Flag"
+# --- From wf_CM_Z1_DAILY_SALES_FEED.XML ---
+
+  - name: stg_t_cm_z1_sales
+    description: "Staging model for T_CM Z1 sales data with basic cleaning"
+    columns:
+  - name: t_cm_z1_sales_id
+        description: "Primary key for sales record"
+        tests:
+  - not_null
+  - unique
+  - name: ordernumber
+        description: "Order number"
+        tests:
+  - not_null
+  - name: lineitemnumber
+        description: "Line item number"
+  - name: invoicenumber
+        description: "Invoice number"
+  - name: invoicedate
+        description: "Invoice date"
+        tests:
+  - not_null
+  - name: sourcesystem
+        description: "Source system identifier"
+        tests:
+  - not_null
+  - name: businesssegment
+        description: "Business segment code"
+  - name: businesssegmentdescription
+        description: "Business segment description"
+  - name: surgerydate
+        description: "Surgery date"
+  - name: customernumber
+        description: "Customer number"
+  - name: customernumbershipto
+        description: "Ship-to customer number"
+  - name: customername
+        description: "Customer name"
+  - name: txncustomernumber
+        description: "Transaction customer number"
+  - name: txncustomername
+        description: "Transaction customer name"
+  - name: customerpattern
+        description: "Customer pattern"
+  - name: customerpo
+        description: "Customer purchase order"
+  - name: surgeonid
+        description: "Surgeon ID"
+  - name: surgeonname
+        description: "Surgeon name"
+  - name: txnsurgeonid
+        description: "Transaction surgeon ID"
+  - name: txnsurgeonname
+        description: "Transaction surgeon name"
+  - name: itemnumber
+        description: "Item number"
+  - name: itemdescription
+        description: "Item description"
+  - name: salesadjustmentname
+        description: "Sales adjustment name"
+  - name: salesadjustmenttype
+        description: "Sales adjustment type"
+  - name: rafinvoicedate
+        description: "RAF invoice date"
+  - name: itemclass
+        description: "Item class"
+  - name: itemclassdescription
+        description: "Item class description"
+  - name: unitsaleprice
+        description: "Unit sale price"
+  - name: quantityshipped
+        description: "Quantity shipped"
+  - name: unitlistprice
+        description: "Unit list price"
+  - name: county
+        description: "County code"
+  - name: txncounty
+        description: "Transaction county"
+  - name: countydescription
+        description: "County description"
+  - name: territoryid
+        description: "Territory ID"
+  - name: trxterritoryid
+        description: "Transaction territory ID"
+  - name: trxterritoryname
+        description: "Transaction territory name"
+  - name: trxsalesrepnumber
+        description: "Transaction sales rep number"
+  - name: trxsalesrepname
+        description: "Transaction sales rep name"
+  - name: contractnumber
+        description: "Contract number"
+  - name: contractname
+        description: "Contract name"
+  - name: pricingpenaltyproration
+        description: "Pricing penalty proration"
+  - name: commissioncode
+        description: "Commission code"
+  - name: ordertype
+        description: "Order type"
+  - name: transferordertype
+        description: "Transfer order type"
+  - name: transactiontypecode
+        description: "Transaction type code"
+  - name: costcenter
+        description: "Cost center"
+  - name: z_to_zindicator
+        description: "Z to Z indicator"
+  - name: transportationdistributor
+        description: "Transportation distributor"
+  - name: transportationzimmer
+        description: "Transportation zimmer"
+  - name: acctsreceivablevalue
+        description: "Accounts receivable value"
+  - name: customerfreight
+        description: "Customer freight"
+  - name: restockfee
+        description: "Restock fee"
+  - name: adjdetailreporttablenum
+        description: "Adjustment detail report table number"
+  - name: specialcharges
+        description: "Special charges"
+  - name: salestax
+        description: "Sales tax"
+  - name: othertaxes
+        description: "Other taxes"
+  - name: transactionheader
+        description: "Transaction header"
+  - name: customertype
+        description: "Customer type"
+  - name: etl_md5
+        description: "ETL MD5 hash"
+  - name: etl_updt_flg
+        description: "ETL update flag"
+  - name: etl_create_dte
+        description: "ETL create date"
+  - name: etl_load_dte
+        description: "ETL load date"
+  - name: shipviadesc
+        description: "Ship via description"
+  - name: sms_case_number
+        description: "SMS case number"
+  - name: trailerrecord_yn
+        description: "Trailer record Y/N flag"
+# --- From wf_DI_ITEM_MTRL_MASTER.XML ---
+
+  - name: stg_xml_md_material_attr_txt
+    description: "Staging model for XML material attributes"
+    columns:
+  - name: product
+        description: "Product identifier"
+        tests:
+  - not_null
+  - name: product_type
+        description: "Product type code"
+  - name: cross_plant_status
+        description: "Cross plant status"
+  - name: creation_date
+        description: "Product creation date"
+  - name: created_by_user
+        description: "User who created the product"
+  - name: language
+        description: "Language code"
+  - name: product_description
+        description: "Product description text"
+  - name: gross_weight
+        description: "Gross weight of product"
+  - name: net_weight
+        description: "Net weight of product"
+  - name: base_unit
+        description: "Base unit of measure"
+# --- Chunk 2 ---
+
+  - name: stg_material_master_raw
+    description: "Staging model for raw material master data"
+    columns:
+  - name: product
+        description: "Material number - primary key"
+        tests:
+  - not_null
+  - unique
+  - name: product_group
+        description: "Material group"
+  - name: product_type
+        description: "Material type"
+  - name: base_unit
+        description: "Base unit of measure"
+  - name: created_by_user
+        description: "User who created the record"
+        tests:
+  - not_null
+  - name: creation_date
+        description: "Creation date"
+        tests:
+  - not_null
+  - name: last_changed_by_user
+        description: "Last user to modify"
+  - name: last_change_date
+        description: "Last change date"
+  - name: etl_load_dt
+        description: "ETL load timestamp"
+        tests:
+  - not_null
+
+  - name: stg_material_characteristics
+    description: "Staging model for material characteristics lookup"
+    columns:
+  - name: key_of_obj
+        description: "Object key"
+        tests:
+  - not_null
+  - name: char_value
+        description: "Characteristic value"
+# --- Chunk 3 ---
+
+  - name: stg_product_master
+    description: "Staging model for product master data"
+    columns:
+  - name: product
+        description: "Product number (trimmed)"
+        tests:
+  - not_null
+  - unique
+  - name: product_description
+        description: "Product description"
+  - name: base_unit
+        description: "Base unit of measure"
+  - name: material_volume
+        description: "Material volume as decimal"
+  - name: net_weight
+        description: "Net weight"
+  - name: gross_weight
+        description: "Gross weight"
+  - name: creation_datetime
+        description: "Combined creation date and time"
+  - name: last_change_datetime
+        description: "Combined last change date and time"
+  - name: cad_indicator
+        description: "CAD indicator (Y/N)"
+  - name: bulk_liquid_indicator
+        description: "Bulk liquid indicator (Y/N)"
+  - name: highly_viscous_indicator
+        description: "Highly viscous indicator (Y/N)"
+  - name: environment_relevant
+        description: "Environment relevant indicator (Y/N)"
+  - name: approved_batch_rec_req
+        description: "Approved batch record required (Y/N)"
+  - name: batch_management_required
+        description: "Batch management required (Y/N)"
+  - name: is_marked_for_deletion
+        description: "Soft delete indicator (Y/N)"
+
+  - name: stg_item_attributes
+    description: "Staging model for item attributes lookup"
+    columns:
+  - name: key_of_obj
+        description: "Item number key"
+        tests:
+  - not_null
+  - name: char_value
+        description: "Attribute value"
+  - name: attribute_name
+        description: "Attribute name"
+# --- Chunk 4 ---
+
+  - name: stg_xml_md_material_attr_txt
+    description: "Staging model for XML material attributes"
+    columns:
+  - name: product
+        description: "Product identifier"
+        tests:
+  - not_null
+  - name: product_type
+        description: "Product type code"
+  - name: cross_plant_status
+        description: "Cross plant status"
+  - name: creation_date
+        description: "Creation date"
+  - name: created_by_user
+        description: "User who created the record"
+  - name: last_change_date
+        description: "Last change date"
+  - name: last_changed_by_user
+        description: "User who last changed the record"
+  - name: product_description
+        description: "Product description text"
+  - name: language
+        description: "Language code"
+  - name: gross_weight
+        description: "Gross weight of product"
+  - name: net_weight
+        description: "Net weight of product"
+  - name: material_volume
+        description: "Material volume"
+  - name: base_unit
+        description: "Base unit of measure"
+# --- Chunk 5 ---
+
+  - name: stg_mtrl_master
+    description: "Staged material master data"
+    columns:
+  - name: mtrl_nbr
+        description: "Material number"
+        tests:
+  - not_null
+  - unique
+  - name: mtrl_desc
+        description: "Material description"
+  - name: mtrl_tp
+        description: "Material type"
+  - name: base_uom
+        description: "Base unit of measure"
+  - name: created_dt
+        description: "Creation date"
+  - name: last_chg_dt
+        description: "Last change date"
+  - name: etl_load_dt
+        description: "ETL load timestamp"
+
+  - name: stg_ibp_scope_ind_lookup
+    description: "Staged IBP scope indicator lookup"
+    columns:
+  - name: key_of_obj
+        description: "Lookup key"
+        tests:
+  - not_null
+  - name: ibp_scope_ind_value
+        description: "IBP scope indicator value"
+
+  - name: stg_ce_mark_ind_lookup
+    description: "Staged CE mark indicator lookup"
+    columns:
+  - name: key_of_obj
+        description: "Lookup key"
+        tests:
+  - not_null
+  - name: ce_mark_ind_value
+        description: "CE mark indicator value"
+
+  - name: stg_fda_prod_cd_lookup
+    description: "Staged FDA product code lookup"
+    columns:
+  - name: key_of_obj
+        description: "Lookup key"
+        tests:
+  - not_null
+  - name: fda_prod_cd_value
+        description: "FDA product code value"
+# --- Chunk 6 ---
+
+  - name: stg_item_material_master
+    description: "Staging model for item material master data"
+    columns:
+  - name: product
+        description: "Product identifier"
+        tests:
+  - not_null
+  - unique
+  - name: mater_grp_pckg_mater
+        description: "Material group packaging material"
+  - name: product_group
+        description: "Product group"
+  - name: weight_unit
+        description: "Weight unit of measure"
+  - name: volume_unit
+        description: "Volume unit of measure"
+  - name: material_volume
+        description: "Material volume"
+  - name: net_weight
+        description: "Net weight"
+  - name: gross_weight
+        description: "Gross weight"
+  - name: base_unit
+        description: "Base unit of measure"
+  - name: product_description
+        description: "Product description"
+  - name: created_by_user
+        description: "Created by user"
+        tests:
+  - not_null
+  - name: creation_date
+        description: "Creation date"
+        tests:
+  - not_null
+  - name: last_changed_by_user
+        description: "Last changed by user"
+  - name: last_change_date
+        description: "Last change date"
+  - name: etl_load_dt
+        description: "ETL load date"
+        tests:
+  - not_null
+
+  - name: stg_material_characteristics_lookup
+    description: "Staging model for material characteristics lookup"
+    columns:
+  - name: key_of_obj
+        description: "Key of object (item number)"
+        tests:
+  - not_null
+  - name: char_value
+        description: "Characteristic value"
+  - name: characteristic_name
+        description: "Characteristic name"
+        tests:
+  - not_null
+# --- Chunk 7 ---
+
+  - name: stg_material_master
+    description: "Staging model for material master data with basic cleaning"
+    columns:
+  - name: product
+        description: "Product/Material number (trimmed)"
+        tests:
+  - not_null
+  - unique
+  - name: product_description
+        description: "Product description"
+  - name: base_unit
+        description: "Base unit of measure"
+  - name: product_type
+        description: "Product type"
+  - name: net_weight
+        description: "Net weight"
+  - name: gross_weight
+        description: "Gross weight"
+  - name: created_by_user
+        description: "User who created the record"
+  - name: last_changed_by_user
+        description: "User who last changed the record"
+# --- Chunk 8 ---
+
+  - name: stg_item_material_master
+    description: "Staging model for item material master data"
+    columns:
+  - name: product
+        description: "Product identifier"
+        tests:
+  - not_null
+  - unique
+  - name: mater_grp_pckg_mater
+        description: "Material group packaging material"
+  - name: product_group
+        description: "Product group"
+  - name: weight_unit
+        description: "Weight unit of measure"
+  - name: volume_unit
+        description: "Volume unit of measure"
+  - name: material_volume
+        description: "Material volume"
+  - name: size_or_dimension_text
+        description: "Size or dimension text"
+  - name: product_hierarchy
+        description: "Product hierarchy"
+  - name: product_old_id
+        description: "Product old identifier"
+  - name: net_weight
+        description: "Net weight"
+  - name: labdsgnoffc
+        description: "Lab design office"
+  - name: product_standard_id
+        description: "Product standard identifier"
+  - name: gross_weight
+        description: "Gross weight"
+  - name: item_category_group
+        description: "Item category group"
+  - name: external_product_group
+        description: "External product group"
+  - name: division
+        description: "Division"
+  - name: cross_plant_status_validity_date
+        description: "Cross plant status validity date"
+  - name: cross_plant_status
+        description: "Cross plant status"
+  - name: international_article_number_cat
+        description: "International article number category"
+  - name: authorization_group
+        description: "Authorization group"
+  - name: product_type
+        description: "Product type"
+  - name: industry_sector
+        description: "Industry sector"
+  - name: base_unit
+        description: "Base unit of measure"
+        tests:
+  - not_null
+  - name: danger_goods_ind
+        description: "Dangerous goods indicator"
+  - name: is_batch_management_required
+        description: "Batch management required indicator"
+  - name: disposable_ind
+        description: "Disposable indicator"
+  - name: expiry_ind
+        description: "Expiry indicator"
+  - name: sterile_ind
+        description: "Sterile indicator"
+  - name: serialized_ind
+        description: "Serialized indicator"
+  - name: maint_st
+        description: "Maintenance status"
+  - name: commodity
+        description: "Commodity code"
+  - name: country_of_origin_material
+        description: "Country of origin for material"
+  - name: product_description
+        description: "Product description"
+  - name: is_marked_for_deletion
+        description: "Marked for deletion indicator"
+  - name: created_by_user
+        description: "Created by user"
+  - name: creation_date
+        description: "Creation date"
+  - name: last_changed_by_user
+        description: "Last changed by user"
+  - name: last_change_date
+        description: "Last change date"
+  - name: insert_update_flag
+        description: "Insert/Update flag"
+# --- Chunk 9 ---
+
+  - name: stg_material_master
+    description: "Staging model for material master data"
+    columns:
+  - name: product
+        description: "Product/Material number"
+        tests:
+  - not_null
+  - unique
+  - name: product_type
+        description: "Material type"
+  - name: material_volume
+        description: "Material volume"
+  - name: net_weight
+        description: "Net weight of material"
+  - name: gross_weight
+        description: "Gross weight of material"
+  - name: base_unit
+        description: "Base unit of measure"
+  - name: created_by_user
+        description: "User who created the record"
+  - name: creation_date
+        description: "Creation date"
+        tests:
+  - not_null
+  - name: last_changed_by_user
+        description: "User who last changed the record"
+  - name: last_change_date
+        description: "Last change date"
+
+  - name: stg_xml_material_attr_txt
+    description: "Staging model for XML material attribute text"
+    columns:
+  - name: product
+        description: "Product number"
+        tests:
+  - not_null
+  - name: product_type
+        description: "Product type"
+  - name: cross_plant_status
+        description: "Cross plant status"
+  - name: creation_date
+        description: "Creation date"
+
+  - name: stg_material_characteristics
+    description: "Staging model for material characteristics lookup"
+    columns:
+  - name: key_of_obj
+        description: "Object key (material number)"
+        tests:
+  - not_null
+  - name: char_value
+        description: "Characteristic value"
+  - name: characteristic_name
+        description: "Characteristic name"
+# --- Chunk 10 ---
+
+  - name: stg_product_type_data
+    description: "Staged product type master data from SAP"
+    columns:
+  - name: product
+        description: "Product number - primary key"
+        tests:
+  - not_null
+  - unique
+  - name: product_group
+        description: "Product group classification"
+  - name: weight_unit
+        description: "Unit of measure for weight"
+  - name: volume_unit
+        description: "Unit of measure for volume"
+  - name: material_volume
+        description: "Volume of the material"
+  - name: base_unit
+        description: "Base unit of measure"
+        tests:
+  - not_null
+  - name: is_batch_management_required
+        description: "Indicates if batch management is required"
+  - name: is_marked_for_deletion
+        description: "Deletion flag indicator"
+
+  - name: stg_product_description_data
+    description: "Staged product description data"
+    columns:
+  - name: product0
+        description: "Product number"
+        tests:
+  - not_null
+  - name: language
+        description: "Language key"
+        tests:
+  - not_null
+  - name: product_description
+        description: "Product description text"
+# --- Chunk 11 ---
+
+  - name: stg_xml_material_attr
+    description: "Staged XML material attributes data"
+    columns:
+  - name: mtrl_nbr
+        description: "Material number"
+        tests:
+  - not_null
+  - name: mtrl_desc
+        description: "Material description"
+  - name: created_dt
+        description: "Creation date"
+  - name: last_chg_dt
+        description: "Last change date"
+  - name: etl_load_dt
+        description: "ETL load timestamp"
+        tests:
+  - not_null
+
+  - name: stg_mtrl_master
+    description: "Staged existing material master records"
+    columns:
+  - name: mtrl_nbr
+        description: "Material number - primary key"
+        tests:
+  - not_null
+  - unique
+  - name: mtrl_desc
+        description: "Material description"
+  - name: etl_load_dt
+        description: "ETL load timestamp"
+# --- Chunk 12 ---
+
+  - name: stg_xml_material_attr_txt
+    description: "Staged XML material attributes and text data"
+    columns:
+  - name: product
+        description: "Product identifier"
+        tests:
+  - not_null
+  - name: product_type
+        description: "Product type classification"
+  - name: product_description
+        description: "Product description text"
+  - name: creation_date
+        description: "Material creation date"
+        tests:
+  - not_null
+  - name: created_by_user
+        description: "User who created the material"
+  - name: base_unit
+        description: "Base unit of measure"
+  - name: is_batch_management_required
+        description: "Batch management requirement indicator"
+  - name: cross_plant_status
+        description: "Cross plant material status"
+  - name: authorization_group
+        description: "Authorization group"
+  - name: industry_standard_name
+        description: "Industry standard name"
+  - name: commodity
+        description: "Commodity classification"
+  - name: country_of_origin_material
+        description: "Country of origin for material"
+# --- Chunk 13 ---
+
+  - name: stg_mtrl_master
+    description: "Staging model for material master data"
+    columns:
+  - name: mtrl_nbr
+        description: "Material number - primary key"
+        tests:
+  - not_null
+  - unique
+  - name: pkgng_mtrl_grp
+        description: "Packaging material group"
+  - name: mtrl_grp
+        description: "Material group"
+  - name: wgt_unit_cd
+        description: "Weight unit code"
+  - name: vol_unit_cd
+        description: "Volume unit code"
+  - name: mtrl_vol
+        description: "Material volume"
+  - name: size_dim
+        description: "Size dimension"
+  - name: lvl_7_cd
+        description: "Level 7 code"
+  - name: old_mtrl_nbr
+        description: "Old material number"
+  - name: net_wgt
+        description: "Net weight"
+  - name: lab_dsgn_ofc
+        description: "Lab design office"
+  - name: ean_upc_nbr
+        description: "EAN/UPC number"
+  - name: gross_wgt
+        description: "Gross weight"
+  - name: gnrl_item_cat_grp
+        description: "General item category group"
+  - name: entrnl_mtrl_grp
+        description: "External material group"
+  - name: division_cd
+        description: "Division code"
+  - name: x_plnt_mtrl_sts_dt
+        description: "Cross plant material status date"
+  - name: x_plnt_mtrl_sts
+        description: "Cross plant material status"
+  - name: ean_cat
+        description: "EAN category"
+  - name: auth_grp
+        description: "Authorization group"
+  - name: mtrl_tp
+        description: "Material type"
+  - name: industry_sctr
+        description: "Industry sector"
+  - name: dcmnt_pg_nbr
+        description: "Document page number"
+  - name: industry_std_desc
+        description: "Industry standard description"
+  - name: dcmnt_vrsn
+        description: "Document version"
+  - name: dcmnt_tp
+        description: "Document type"
+  - name: dcmnt_chng_nbr
+        description: "Document change number"
+  - name: cad_ind
+        description: "CAD indicator"
+  - name: basic_mtrl
+        description: "Basic material"
+  - name: pg_format
+        description: "Page format"
+  - name: bulk_lqd_ind
+        description: "Bulk liquid indicator"
+  - name: hgly_vscs_ind
+        description: "Highly viscous indicator"
+  - name: sterile_ind
+        description: "Sterile indicator"
+  - name: serialized_ind
+        description: "Serialized indicator"
+  - name: created_by
+        description: "Created by user"
+  - name: created_dt
+        description: "Creation date"
+  - name: commodity
+        description: "Commodity code"
+  - name: maint_status
+        description: "Maintenance status"
+  - name: cntry_of_orgn_cd
+        description: "Country of origin code"
+  - name: pvc_free_ind
+        description: "PVC free indicator"
+  - name: eccn_nbr
+        description: "ECCN number"
+  - name: dehp_free_ind
+        description: "DEHP free indicator"
+  - name: mercury_free_ind
+        description: "Mercury free indicator"
+  - name: latex_ind
+        description: "Latex indicator"
+  - name: pto_relevant
+        description: "PTO relevant"
+  - name: pto_relevant_qnty
+        description: "PTO relevant quantity"
+  - name: ce_mark_ind
+        description: "CE mark indicator"
+  - name: fda_prod_cd
+        description: "FDA product code"
+  - name: dps_generic_lot
+        description: "DPS generic lot"
+  - name: dps_uom_qty
+        description: "DPS UOM quantity"
+  - name: rebox_id
+        description: "Rebox ID"
+  - name: rework_ind
+        description: "Rework indicator"
+  - name: hyp_cd
+        description: "HYP code"
+  - name: hyp_brand_desc
+        description: "HYP brand description"
+  - name: hazardous_ind
+        description: "Hazardous indicator"
+  - name: mtrl_thk_ind
+        description: "Material thickness indicator"
+  - name: mtrl_thk_upr_limit
+        description: "Material thickness upper limit"
+  - name: mtrl_thk_lwr_limit
+        description: "Material thickness lower limit"
+  - name: mtrl_thk_msrmt
+        description: "Material thickness measurement"
+  - name: pkgg_mtrl_tp
+        description: "Packaging material type"
+  - name: hndlng_unit_tp
+        description: "Handling unit type"
+  - name: mtrl_length
+        description: "Material length"
+  - name: mtrl_wdth
+        description: "Material width"
+  - name: mtrl_hgt
+        description: "Material height"
+  - name: shpng_rstrctn
+        description: "Shipping restriction"
+  - name: shpng_tmptr_ctrl_ind
+        description: "Shipping temperature control indicator"
+  - name: scrap_itm_ind
+        description: "Scrap item indicator"
+  - name: rebox_ww_ind
+        description: "Rebox worldwide indicator"
+  - name: rebox_nw_ind
+        description: "Rebox network indicator"
+  - name: instrmnt_ind
+        description: "Instrument indicator"
+  - name: uod_value
+        description: "UOD value"
+  - name: etl_load_dt
+        description: "ETL load date"
+        tests:
+  - not_null
+
+  - name: stg_product_description
+    description: "Staging model for product descriptions"
+    columns:
+  - name: product
+        description: "Product number"
+        tests:
+  - not_null
+  - name: product_description
+        description: "Product description text"
+  - name: language
+        description: "Language code"
+# --- Chunk 14 ---
+
+  - name: stg_material_attr_txt
+    description: "Staged material attributes and text data with standardized boolean fields"
+    columns:
+  - name: product
+        description: "Product identifier - primary key"
+        tests:
+  - not_null
+  - unique
+  - name: material_volume
+        description: "Volume of the material"
+  - name: product_description
+        description: "Description of the product"
+        tests:
+  - not_null
+  - name: creation_date
+        description: "Date when record was created"
+        tests:
+  - not_null
+  - name: created_by_user
+        description: "User who created the record"
+  - name: last_change_date
+        description: "Date of last change"
+  - name: last_changed_by_user
+        description: "User who last changed the record"
+  - name: is_marked_for_deletion
+        description: "Boolean flag indicating if marked for deletion"
+  - name: indi_in_bulk_liquid
+        description: "Boolean indicator for bulk liquid"
+  - name: cad_indicator
+        description: "Boolean CAD indicator"
+  - name: envrmnt_relevant
+        description: "Boolean environment relevant indicator"
+  - name: indi_highly_viscous
+        description: "Boolean highly viscous indicator"
+  - name: approved_batch_rec_req
+        description: "Boolean approved batch record required"
+  - name: is_batch_management_required
+        description: "Boolean batch management required"
+# --- Chunk 15 ---
+
+  - name: stg_material_master_records
+    description: "Staging model for material master records"
+    columns:
+  - name: product
+        description: "Product ID - Primary key"
+        tests:
+  - not_null
+  - unique
+  - name: product_description
+        description: "Product description"
+  - name: base_unit
+        description: "Base unit of measure"
+  - name: creation_date
+        description: "Record creation date"
+  - name: last_change_date
+        description: "Last change date"
+  - name: is_marked_for_deletion
+        description: "Deletion flag"
+
+  - name: stg_material_attr_txt
+    description: "Staging model for material attribute text"
+    columns:
+  - name: product
+        description: "Product ID"
+        tests:
+  - not_null
+  - name: language
+        description: "Language key"
+        tests:
+  - not_null
+  - name: product_description
+        description: "Product description in specific language"
+# --- Chunk 16 ---
+
+  - name: stg_xml_material_attr_txt
+    description: Staging model for XML material attributes and text
+    columns:
+  - name: material_id
+        description: Material identifier
+        tests:
+  - not_null
+  - name: language_key
+        description: Language key for material description
+        tests:
+  - not_null
+  - name: material_desc
+        description: Material description
+  - name: attr_value
+        description: Material attribute value
+  - name: created_date
+        description: Record creation date
+  - name: updated_date
+        description: Record update date
+
+  - name: stg_mtrl_master_lookup
+    description: Staging model for material master lookup data
+    columns:
+  - name: material_id
+        description: Material identifier
+        tests:
+  - not_null
+  - unique
+  - name: material_desc
+        description: Material description
+  - name: record_hash
+        description: MD5 hash of record
+  - name: created_date
+        description: Record creation date
+  - name: updated_date
+        description: Record update date
+# --- From wf_FF_AT_Z1_GL_ACCOUNT.XML ---
+
+  - name: stg_gbi__gb_z1_appt1
+    description: "Staging model for GL Account data from BW source"
+    columns:
+  - name: postingdateinthedocument
+        description: "Posting date in the document"
+        tests:
+  - not_null
+  - name: costcenter
+        description: "Cost center"
+  - name: localcurrency
+        description: "Local currency"
+  - name: glaccountnumber
+        description: "GL account number"
+        tests:
+  - not_null
+  - name: fiscalyear
+        description: "Fiscal year"
+        tests:
+  - not_null
+  - name: purchasingdocumentnumber
+        description: "Purchasing document number"
+  - name: accountingdocumentnumber
+        description: "Accounting document number"
+        tests:
+  - not_null
+  - name: numoflineitemwithinaccountdoc
+        description: "Number of line item within account document"
+  - name: companycode
+        description: "Company code"
+        tests:
+  - not_null
+  - name: glaccountlongname
+        description: "GL account long name"
+  - name: accountnumofvendororcreditor
+        description: "Account number of vendor or creditor"
+  - name: supplierfullname
+        description: "Supplier full name"
+  - name: debitcreditindicator
+        description: "Debit credit indicator"
+  - name: invoice_reference
+        description: "Invoice reference"
+  - name: itemtext
+        description: "Item text"
+  - name: currencykey
+        description: "Currency key"
+  - name: projectdefinition
+        description: "Project definition"
+  - name: wbs
+        description: "Work breakdown structure"
+  - name: documenttype
+        description: "Document type"
+  - name: source_desc_long
+        description: "Source description long"
+  - name: fiscalperiod
+        description: "Fiscal period"
+  - name: amountinlocalcurrency
+        description: "Amount in local currency"
+  - name: amountindocumentcurrency
+        description: "Amount in document currency"
+  - name: amount_dc
+        description: "Amount DC"
+  - name: amount_lc
+        description: "Amount LC"
+# --- From wf_FF_AT_ZJ_GL_ACCOUNT.XML ---
+
+  - name: stg_sap_bw__zjglaptin
+    description: "Staging model for SAP BW GL Account data"
+    columns:
+  - name: ohrequid
+        description: "Request ID"
+        tests:
+  - not_null
+  - name: datapakid
+        description: "Data Package ID"
+        tests:
+  - not_null
+  - name: record
+        description: "Data Record number"
+        tests:
+  - not_null
+  - name: gl_account_number
+        description: "GL Account number (cleaned)"
+  - name: cost_center
+        description: "Cost Center"
+  - name: journal_id
+        description: "Document/Journal ID"
+  - name: document_type
+        description: "Document Type"
+  - name: journal_line_id
+        description: "Journal Line ID"
+  - name: vendor_id
+        description: "Vendor ID"
+  - name: vendor_name
+        description: "Vendor Name"
+  - name: account_description
+        description: "Account Description"
+  - name: base_currency_code
+        description: "Base Currency Code"
+  - name: from_currency_code
+        description: "From Currency Code"
+  - name: journal_line_description
+        description: "Journal Line Description (cleaned)"
+  - name: remark_explanation
+        description: "Remark/Explanation (cleaned)"
+  - name: subledger_gl
+        description: "Subledger G/L"
+  - name: purchase_order
+        description: "Purchase Order"
+  - name: supplier_invoice
+        description: "Supplier Invoice"
+  - name: posting_date
+        description: "Posting Date (formatted)"
+  - name: fiscal_year_period
+        description: "Fiscal Year/Period"
+  - name: source_erp
+        description: "Source ERP Description"
+  - name: amount
+        description: "Amount (truncated to 3 decimals)"
+  - name: local_amount
+        description: "Local Amount (truncated to 3 decimals)"
+# --- From wf_S_BP_ARURHD.XML ---
+
+  - name: stg_bpcs_arurhd
+    description: "Staging model for ARURHD table from Japan BPCS"
+    columns:
+  - name: lhspcd
+        description: "Supplier code"
+        tests:
+  - not_null
+  - name: lhspno
+        description: "Supplier number"
+        tests:
+  - not_null
+  - name: lhsptk
+        description: "Supplier type key"
+  - name: lhtrbk
+        description: "Transaction book"
+  - name: lhegcd
+        description: "Entity group code"
+  - name: lhedsq
+        description: "Entity sequence"
+  - name: lhcscd
+        description: "Cost center code"
+  - name: lhhpcd
+        description: "Holding company code"
+  - name: lhsptp
+        description: "Supplier type"
+  - name: lhtacd
+        description: "Tax code"
+  - name: lhspnd
+        description: "Spend amount"
+  - name: lhnyyd
+        description: "Net year amount"
+  - name: lhrcdt
+        description: "Record date"
+  - name: lhpayk
+        description: "Payment key"
+  - name: lhdda1
+        description: "Data field 1"
+  - name: lhdda2
+        description: "Data field 2"
+  - name: lhspat
+        description: "Supplier amount"
+  - name: lhtaxm
+        description: "Tax amount"
+  - name: lhaskm
+        description: "Ask amount"
+  - name: lhrsdt
+        description: "Result date"
+  - name: lhtaxh
+        description: "Tax hold"
+  - name: lhrsam
+        description: "Result amount"
+  - name: lhslcd
+        description: "Sales code"
+  - name: lhctax
+        description: "Current tax"
+  - name: lhchom
+        description: "Current home amount"
+  - name: lhtden
+        description: "Transaction denomination"
+  - name: lhtded
+        description: "Transaction date"
+  - name: lhrcrm
+        description: "Record amount"
+  - name: lhdlkb
+        description: "Delete key"
+  - name: lhodno
+        description: "Order number"
+  - name: lhkhst
+        description: "Key history"
+  - name: lhnksf
+        description: "Net key flag"
+  - name: lhspnk
+        description: "Supplier net key"
+  - name: lhnyuf
+        description: "Net update flag"
+  - name: lhtaxf
+        description: "Tax flag"
+  - name: lhsefg
+        description: "Settlement flag"
+  - name: lhsedt
+        description: "Settlement date"
+  - name: lhhryu
+        description: "Hold reason"
+  - name: lhdltf
+        description: "Delete flag"
+  - name: lhrldt
+        description: "Release date"
+  - name: lhrltm
+        description: "Release time"
+  - name: lhrlur
+        description: "Release user"
+  - name: lhrlpg
+        description: "Release program"
+  - name: etl_load_dte
+        description: "ETL load timestamp"
+        tests:
+  - not_null

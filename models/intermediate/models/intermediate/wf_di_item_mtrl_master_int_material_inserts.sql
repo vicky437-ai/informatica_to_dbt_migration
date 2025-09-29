@@ -1,0 +1,47 @@
+-- Source: wf_DI_ITEM_MTRL_MASTER.XML
+-- Intermediate model for insert records
+-- Filters records that need to be inserted
+
+select
+    material_id,
+    language_key,
+    material_desc,
+    attr_value,
+    disposable_ind,
+    expiry_ind,
+    sterile_ind,
+    serialized_ind,
+    hyp_brand_desc,
+    hyp_cd,
+    rework_ind,
+    rebox_id,
+    dps_uom_qty,
+    dps_generic_lot,
+    fda_prod_cd,
+    ce_mark_ind,
+    ibp_scope_ind,
+    eccn_nbr,
+    pto_relevant,
+    pto_relevant_qnty,
+    hazardous_ind,
+    mercury_free_ind,
+    latex_ind,
+    pvc_free_ind,
+    dehp_free_ind,
+    danger_goods_ind,
+    mtrl_thk_msrmt,
+    mtrl_thk_lwr_limit,
+    mtrl_thk_upr_limit,
+    mtrl_thk_ind,
+    shpng_rstrctn,
+    instrmnt_ind,
+    rebox_nw_ind,
+    rebox_ww_ind,
+    scrap_itm_ind,
+    shpng_tmptr_ctrl_ind,
+    new_record_hash as record_hash,
+    current_timestamp as created_date,
+    current_timestamp as updated_date,
+    loaded_at
+from {{ ref('models/intermediate/wf_di_item_mtrl_master_int_material_with_change_detection') }}
+where operation_type = 'INSERT'
