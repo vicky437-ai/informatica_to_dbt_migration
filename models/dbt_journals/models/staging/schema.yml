@@ -1,0 +1,375 @@
+# From wf_BL_FF_ZJ_JOURNALS.XML
+version: 2
+
+models:
+  - name: stg_ff_bl_zj_journals_src
+    description: "Staging model for Blackline journal entries flat file source"
+    columns:
+      - name: batch_number
+        description: "Batch number identifier"
+        tests:
+          - not_null
+      - name: document_number
+        description: "Document number"
+        tests:
+          - not_null
+      - name: document_company
+        description: "Document company code"
+        tests:
+          - not_null
+      - name: journal_entry_line_number
+        description: "Journal entry line number"
+        tests:
+          - not_null
+      - name: account_number
+        description: "Account number"
+        tests:
+          - not_null
+      - name: amount
+        description: "Transaction amount"
+        tests:
+          - not_null
+      - name: gl_date_converted
+        description: "Converted GL date from Julian format"
+      - name: batch_date_converted
+        description: "Converted batch date from Julian format"
+      - name: date_updated_converted
+        description: "Converted update date from Julian format"
+# --- Chunk 2 ---
+version: 2
+
+models:
+  - name: stg_f0011_f0911_f0901
+    description: "Staging model combining F0011, F0911, and F0901 tables"
+    columns:
+      - name: glicu
+        description: "General Ledger Item Unit Cost"
+        tests:
+          - not_null
+      - name: gldct
+        description: "Document Type"
+        tests:
+          - not_null
+      - name: gldoc
+        description: "Document Number"
+        tests:
+          - not_null
+      - name: glkco
+        description: "Company Code"
+        tests:
+          - not_null
+      - name: glpost
+        description: "Posted Code"
+        tests:
+          - accepted_values:
+              values: ['P', 'U']
+
+  - name: stg_ff_bl_zj_journals_src
+    description: "Staging model for flat file BL ZJ Journals source"
+    columns:
+      - name: batch_number
+        description: "Batch Number"
+      - name: email
+        description: "Email Address"
+        tests:
+          - not_null
+# --- Chunk 3 ---
+version: 2
+
+models:
+  - name: stg_f0901
+    description: "Staging model for F0901 Account Master table"
+    columns:
+      - name: gmaid
+        description: "Account ID - Primary identifier for accounts"
+        tests:
+          - unique
+          - not_null
+      - name: gmco
+        description: "Company code"
+        tests:
+          - not_null
+      - name: gmmcu
+        description: "Business unit"
+      - name: gmobj
+        description: "Object account - Main account classification"
+      - name: gmsub
+        description: "Subsidiary account - Sub-account classification"
+      - name: gmdl01
+        description: "Account description"
+      - name: gmcrcd
+        description: "Currency code"
+      - name: gmuser
+        description: "User who created the record"
+      - name: gmupmj
+        description: "Date updated (Julian)"
+      - name: gmupmt
+        description: "Time updated"
+
+  - name: stg_f0911
+    description: "Staging model for F0911 Account Ledger table"
+    columns:
+      - name: glkco
+        description: "Company code"
+        tests:
+          - not_null
+      - name: gldct
+        description: "Document type"
+        tests:
+          - not_null
+      - name: gldoc
+        description: "Document number"
+        tests:
+          - not_null
+      - name: gldgj
+        description: "G/L date (Julian)"
+        tests:
+          - not_null
+      - name: gljeln
+        description: "Journal entry line number"
+        tests:
+          - not_null
+      - name: glextl
+        description: "Extension line number"
+        tests:
+          - not_null
+      - name: gllt
+        description: "Ledger type"
+        tests:
+          - not_null
+      - name: glaa
+        description: "Posted amount"
+      - name: globj
+        description: "Object account"
+      - name: glsub
+        description: "Subsidiary account"
+      - name: glmcu
+        description: "Business unit"
+      - name: glcrcd
+        description: "Currency code"
+      - name: gluser
+        description: "User who created the record"
+      - name: glupmj
+        description: "Date updated (Julian)"
+      - name: glupmt
+        description: "Time updated"
+
+  - name: stg_f0011
+    description: "Staging model for F0011 Intercompany Constants table"
+    columns:
+      - name: icicut
+        description: "Intercompany transaction type"
+        tests:
+          - not_null
+      - name: icicu
+        description: "Intercompany business unit"
+        tests:
+          - not_null
+      - name: icist
+        description: "Intercompany status flag"
+      - name: iciapp
+        description: "Intercompany application flag"
+      - name: icaicu
+        description: "Automatic intercompany business unit"
+      - name: icuser
+        description: "User who created the record"
+      - name: icupmj
+        description: "Date updated (Julian)"
+      - name: icupmt
+        description: "Time updated"
+# --- From wf_BL_FF_ZJ_JOURNALS_STG.XML ---
+
+models:
+  - name: stg_f0911_journals
+    description: "Staging model for F0911 Account Ledger journal entries"
+    columns:
+      - name: gldct
+        description: "Document Type"
+        tests:
+          - not_null
+      - name: gldoc
+        description: "Document Number"
+        tests:
+          - not_null
+      - name: glkco
+        description: "Company"
+        tests:
+          - not_null
+      - name: gldgj
+        description: "G/L Date"
+        tests:
+          - not_null
+      - name: gllt
+        description: "Ledger Type"
+        tests:
+          - not_null
+      - name: gljeln
+        description: "Journal Entry Line Number"
+        tests:
+          - not_null
+      - name: glicu
+        description: "Currency Code - From"
+      - name: glicut
+        description: "Currency Code - To"
+      - name: glexa
+        description: "Explanation - Alpha"
+      - name: glcrcd
+        description: "Currency Code"
+      - name: glcrrm
+        description: "Currency Rate Method"
+      - name: gltorg
+        description: "User ID"
+      - name: gldicj
+        description: "Date - Invoice"
+      - name: glextl
+        description: "Extension Code - Line"
+      - name: glani
+        description: "Account Number"
+      - name: glco
+        description: "Company"
+      - name: glaa
+        description: "Amount"
+      - name: glexr
+        description: "Explanation - Remark"
+      - name: glsblt
+        description: "Subledger Type"
+      - name: glsbl
+        description: "Subledger"
+      - name: glpost
+        description: "Posted Code"
+      - name: glre
+        description: "Reverse Entry"
+      - name: glrcnd
+        description: "Reconciled Code"
+      - name: glpo
+        description: "Purchase Order"
+      - name: glasid
+        description: "Asset ID"
+      - name: gluser
+        description: "User ID"
+      - name: glupmj
+        description: "Date - Updated"
+      - name: glupmt
+        description: "Time - Last Updated"
+
+  - name: stg_f0901_accounts
+    description: "Staging model for F0901 Account Master"
+    columns:
+      - name: gmco
+        description: "Company"
+      - name: gmobj
+        description: "Object Account"
+      - name: gmdl01
+        description: "Description - Line 1"
+
+  - name: stg_f0011_address_book
+    description: "Staging model for F0011 Address Book Master"
+    columns:
+      - name: ican8
+        description: "Address Number"
+      - name: icame
+        description: "Mailing Name"
+      - name: icist
+        description: "Status"
+
+  - name: stg_f01151_email
+    description: "Staging model for F01151 Electronic Address"
+    columns:
+      - name: eaan8
+        description: "Address Number"
+      - name: eaemal
+        description: "Email Address"
+# --- Chunk 3 ---
+version: 2
+
+models:
+  - name: stg_f0901
+    description: "Staging model for F0901 Account Master table"
+    columns:
+      - name: gmaid
+        description: "Account ID - Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: gmco
+        description: "Company code"
+      - name: gmmcu
+        description: "Business unit"
+      - name: gmobj
+        description: "Object account"
+      - name: gmsub
+        description: "Subsidiary account"
+      - name: gmdl01
+        description: "Description line 1"
+      - name: gmuser
+        description: "User ID"
+      - name: gmupmj
+        description: "Date updated - Julian"
+      - name: gmupmt
+        description: "Time last updated"
+
+  - name: stg_f0911
+    description: "Staging model for F0911 Account Ledger table"
+    columns:
+      - name: glkco
+        description: "Company code"
+        tests:
+          - not_null
+      - name: gldct
+        description: "Document type"
+        tests:
+          - not_null
+      - name: gldoc
+        description: "Document number"
+        tests:
+          - not_null
+      - name: gldgj
+        description: "G/L date - Julian"
+        tests:
+          - not_null
+      - name: gljeln
+        description: "Journal entry line number"
+        tests:
+          - not_null
+      - name: glextl
+        description: "Extension line number"
+        tests:
+          - not_null
+      - name: gllt
+        description: "Ledger type"
+        tests:
+          - not_null
+      - name: glaa
+        description: "Posted amount"
+      - name: glu
+        description: "Units"
+      - name: glmcu
+        description: "Business unit"
+      - name: globj
+        description: "Object account"
+      - name: glsub
+        description: "Subsidiary account"
+
+  - name: stg_f0011
+    description: "Staging model for F0011 Intercompany Constants table"
+    columns:
+      - name: icicut
+        description: "Intercompany unit type"
+        tests:
+          - not_null
+      - name: icicu
+        description: "Intercompany unit"
+        tests:
+          - not_null
+      - name: icist
+        description: "Intercompany status"
+      - name: iciapp
+        description: "Intercompany application"
+      - name: icaicu
+        description: "Alternate intercompany unit"
+      - name: icuser
+        description: "User ID"
+      - name: icupmj
+        description: "Date updated - Julian"
+      - name: icupmt
+        description: "Time last updated"

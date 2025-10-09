@@ -1,0 +1,32 @@
+name: 'dbt_dicustomer'
+version: '1.0.0'
+config-version: 2
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_dicustomer:
+    staging:
+      +materialized: view
+      +tags: ['staging']
+    intermediate:
+      +materialized: view
+      +tags: ['intermediate']
+    marts:
+      +materialized: table
+      +tags: ['mart']
+
+vars:
+  # Source system parameters
+  stg_mdg_cust_schema: 'STG_MDG_CUST'
+  target_schema: 'AM_SHARED'

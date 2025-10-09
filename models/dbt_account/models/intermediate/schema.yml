@@ -1,0 +1,149 @@
+# From wf_FF_AT_Z1_GL_ACCOUNT.XML
+version: 2
+
+models:
+  - name: int_sq_zb_reporting_finance_global_apptio_gb_z1_appt
+    description: "Source qualifier transformation for BW financial data"
+    columns:
+      - name: postingdateinthedocument
+        description: "Posting date in the document"
+        tests:
+          - not_null
+      - name: accountingdocumentnumber
+        description: "Accounting document number"
+        tests:
+          - not_null
+      - name: companycode
+        description: "Company code"
+        tests:
+          - not_null
+
+  - name: int_exp_passthrough
+    description: "Expression transformation for data cleansing and formatting"
+    columns:
+      - name: out_posting_date
+        description: "Cleaned posting date"
+        tests:
+          - not_null
+      - name: out_accountingdocumentnumber
+        description: "Cleaned accounting document number"
+        tests:
+          - not_null
+      - name: out_amountindocumentcurrency
+        description: "Formatted amount in document currency"
+      - name: out_amountinlocalcurrency
+        description: "Formatted amount in local currency"
+# --- From wf_FF_AT_ZJ_GL_ACCOUNT.XML ---
+
+models:
+  - name: int_amgdsq_zjglaptin
+    description: "Source Qualifier: AMGDSQ_ZJGLAPTIN - Applies source filtering and column selection"
+    columns:
+      - name: ohrequid
+        description: "OH Request ID"
+        tests:
+          - not_null
+      - name: datapakid
+        description: "Data Package ID"
+        tests:
+          - not_null
+      - name: record
+        description: "Data Record number"
+        tests:
+          - not_null
+      - name: glani_zj
+        description: "GL Account Number"
+      - name: glmcu_zj
+        description: "Cost Center"
+      - name: gldoc_zj
+        description: "Document Number"
+      - name: gldct_zj
+        description: "Document Type"
+      - name: gljeln_zj
+        description: "Journal Line Number"
+      - name: vendor_id_zj
+        description: "Vendor ID"
+      - name: vendor_name_zj
+        description: "Vendor Name"
+      - name: gmdl01_zj
+        description: "Account Description"
+      - name: glbcrc_zj
+        description: "Base Currency Code"
+      - name: glcrcd_zj
+        description: "From Currency Code"
+      - name: line_desc_zj
+        description: "Line Description"
+      - name: glexr_zj
+        description: "Explanation/Remark"
+      - name: glsbl_zj
+        description: "Subledger"
+      - name: glpo_zj
+        description: "Purchase Order"
+      - name: glvinv_zj
+        description: "Vendor Invoice"
+      - name: gldgj_zj
+        description: "Posting Date"
+      - name: fiscal_per_zj
+        description: "Fiscal Period"
+      - name: desc_long_zj
+        description: "Long Description"
+      - name: amount_zj
+        description: "Amount"
+      - name: amount_loc_zj
+        description: "Local Amount"
+
+  - name: int_exptrans
+    description: "Expression: EXPTRANS - Applies business logic transformations including data cleansing and formatting"
+    columns:
+      - name: ohrequid
+        description: "OH Request ID"
+        tests:
+          - not_null
+      - name: datapakid
+        description: "Data Package ID"
+        tests:
+          - not_null
+      - name: record
+        description: "Data Record number"
+        tests:
+          - not_null
+      - name: glani_zj
+        description: "GL Account Number"
+      - name: glmcu_zj
+        description: "Cost Center"
+      - name: gldoc_zj
+        description: "Document Number"
+      - name: gldct_zj
+        description: "Document Type"
+      - name: gljeln_zj
+        description: "Journal Line Number"
+      - name: vendor_id_zj
+        description: "Vendor ID"
+      - name: vendor_name_zj
+        description: "Vendor Name"
+      - name: gmdl01_zj
+        description: "Account Description"
+      - name: glbcrc_zj
+        description: "Base Currency Code"
+      - name: glcrcd_zj
+        description: "From Currency Code"
+      - name: out_line_desc_zj
+        description: "Cleaned Line Description (double quotes removed)"
+      - name: out_glexr_zj
+        description: "Cleaned Explanation/Remark (double quotes removed)"
+      - name: glsbl_zj
+        description: "Subledger"
+      - name: glpo_zj
+        description: "Purchase Order"
+      - name: glvinv_zj
+        description: "Vendor Invoice"
+      - name: out_gldgj_zj
+        description: "Formatted Posting Date (YYYYMMDD)"
+      - name: fiscal_per_zj
+        description: "Fiscal Period"
+      - name: desc_long_zj
+        description: "Long Description"
+      - name: out_amount_zj
+        description: "Truncated Amount (3 decimal places)"
+      - name: out_amount_loc_zj
+        description: "Truncated Local Amount (3 decimal places)"

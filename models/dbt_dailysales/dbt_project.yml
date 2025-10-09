@@ -1,0 +1,35 @@
+name: 'dbt_dailysales'
+version: '1.0.0'
+config-version: 2
+
+profile: 'dbt_dailysales'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_dailysales:
+    staging:
+      +materialized: view
+      +tags: ['staging']
+    intermediate:
+      +materialized: view
+      +tags: ['intermediate']
+    marts:
+      +materialized: table
+      +tags: ['mart', 'daily_sales']
+
+vars:
+  # Source filter parameter equivalent to $Param_SQ_Filter
+  source_filter: "1=1"
+  # Source table name parameter equivalent to $Param_Src_Tbl_Nme
+  source_table_name: "T_CM_Z1_SALES"

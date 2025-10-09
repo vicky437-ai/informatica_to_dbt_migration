@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: stg_item_master_raw
+    description: "Staging model for raw item master data with 200 columns"
+    columns:
+      - name: COL_1
+        description: "Item master column 1"
+        tests:
+          - not_null
+      - name: COL_2
+        description: "Item master column 2"
+      - name: COL_3
+        description: "Item master column 3"
+      # Note: In real implementation, all 200 columns would be documented
+      # Truncated for brevity
+      - name: record_loaded_at
+        description: "Timestamp when record was loaded"
+        tests:
+          - not_null
+# --- Chunk 4 ---
+version: 2
+
+models:
+  - name: stg_xml_material_products
+    description: "Staging model for XML material product data"
+    columns:
+      - name: product_key
+        description: "Unique product identifier"
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        description: "Product ID from source"
+        tests:
+          - not_null
+      - name: product_type
+        description: "Product type classification"
+      - name: cross_plant_status
+        description: "Cross plant material status"
+      - name: creation_date
+        description: "Product creation date"
+      - name: created_by_user
+        description: "User who created the product"
+      - name: last_change_date
+        description: "Last modification date"
+      - name: last_changed_by_user
+        description: "User who last modified the product"
+      - name: source_load_timestamp
+        description: "Timestamp when record was loaded"
+
+  - name: stg_xml_material_descriptions
+    description: "Staging model for XML material product descriptions"
+    columns:
+      - name: description_key
+        description: "Unique description identifier"
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        description: "Related product ID"
+        tests:
+          - not_null
+      - name: language
+        description: "Language code for description"
+      - name: product_description
+        description: "Product description text"

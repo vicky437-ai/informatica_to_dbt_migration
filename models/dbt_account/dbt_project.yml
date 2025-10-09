@@ -1,0 +1,36 @@
+name: 'dbt_account'
+version: '1.0.0'
+config-version: 2
+
+# This dbt project combines multiple workflows:
+# - wf_FF_AT_Z1_GL_ACCOUNT
+# - wf_FF_AT_ZJ_GL_ACCOUNT
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_account:
+    staging:
+      +materialized: view
+      +tags: ['staging']
+    intermediate:
+      +materialized: view
+      +tags: ['intermediate']
+    marts:
+      +materialized: table
+      +tags: ['mart']
+
+vars:
+  # Source system variables
+  source_database: 'GBI'
+  source_schema: '_SYS_BIC'

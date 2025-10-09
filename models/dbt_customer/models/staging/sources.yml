@@ -1,0 +1,111 @@
+version: 2
+
+sources:
+  - name: stg_mdg_cust
+    description: "Staging MDG Customer data source system"
+    tables:
+      - name: cust_master
+        description: "Customer master data table"
+        columns:
+          - name: cust_nbr
+            description: "Customer number - primary key"
+            tests:
+              - not_null
+              - unique
+          - name: cntry_key
+            description: "Country key"
+          - name: city
+            description: "City name"
+          - name: po_cd
+            description: "Postal code"
+          - name: region_key
+            description: "Region key"
+          - name: street
+            description: "Street address"
+          - name: tel_nbr_1
+            description: "Primary telephone number"
+          - name: fax_nbr
+            description: "Fax number"
+          - name: industry_tp
+            description: "Industry type"
+          - name: uniform_rsrc_lctr
+            description: "Uniform resource locator"
+          - name: fscl_yr_vrnt
+            description: "Fiscal year variant"
+          - name: annual_sales
+            description: "Annual sales amount"
+          - name: attribute_9
+            description: "Customer attribute 9"
+          - name: central_ordr_blk
+            description: "Central order block indicator"
+          - name: etl_load_dt
+            description: "ETL load timestamp"
+
+      - name: ptnr_fctn
+        description: "Partner function data table"
+        columns:
+          - name: cust_nbr
+            description: "Customer number - foreign key"
+            tests:
+              - not_null
+              - relationships:
+                  to: source('stg_mdg_cust', 'cust_master')
+                  field: cust_nbr
+          - name: sales_org_id
+            description: "Sales organization ID"
+            tests:
+              - not_null
+          - name: dstrbtn_chnl
+            description: "Distribution channel"
+            tests:
+              - not_null
+          - name: division
+            description: "Division"
+            tests:
+              - not_null
+          - name: ptnr_fctn_id
+            description: "Partner function ID"
+            tests:
+              - not_null
+          - name: ptnr_cntr
+            description: "Partner counter"
+            tests:
+              - not_null
+          - name: ptnr_cust_nbr
+            description: "Partner customer number"
+          - name: etl_load_dt
+            description: "ETL load timestamp"
+
+      - name: cust_adrs
+        description: "Customer address data table"
+        columns:
+          - name: adrs_nbr
+            description: "Address number - primary key"
+            tests:
+              - not_null
+          - name: vld_frm_dt
+            description: "Valid from date - primary key"
+            tests:
+              - not_null
+          - name: cust_nbr
+            description: "Customer number - foreign key"
+            tests:
+              - relationships:
+                  to: source('stg_mdg_cust', 'cust_master')
+                  field: cust_nbr
+          - name: name_1
+            description: "Customer name line 1"
+          - name: city
+            description: "City name"
+          - name: region_key
+            description: "Region key"
+          - name: po_cd
+            description: "Postal code"
+          - name: strt_1
+            description: "Street address line 1"
+          - name: strt_2
+            description: "Street address line 2"
+          - name: strt_3
+            description: "Street address line 3"
+          - name: etl_load_dt
+            description: "ETL load timestamp"

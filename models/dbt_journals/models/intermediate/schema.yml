@@ -1,0 +1,131 @@
+# From wf_BL_FF_ZJ_JOURNALS.XML
+version: 2
+
+models:
+  - name: int_journals_enriched
+    description: "Intermediate model: Enriched journal entries with business logic applied"
+    columns:
+      - name: journal_key
+        description: "Composite key for journal entry"
+        tests:
+          - unique
+          - not_null
+      - name: batch_number
+        description: "Batch number identifier"
+        tests:
+          - not_null
+      - name: document_number
+        description: "Document number"
+        tests:
+          - not_null
+      - name: journal_entry_line_number
+        description: "Journal entry line number"
+        tests:
+          - not_null
+      - name: account_number
+        description: "Account number"
+        tests:
+          - not_null
+      - name: amount
+        description: "Transaction amount"
+        tests:
+          - not_null
+# --- Chunk 2 ---
+version: 2
+
+models:
+  - name: int_lkp_f0092
+    description: "Lookup on F0092 table to get ULAN8 column based on ULUSER"
+    columns:
+      - name: in_gltorg
+        description: "Input GLTORG for lookup"
+        tests:
+          - not_null
+      - name: ulan8
+        description: "Address Number from lookup"
+
+  - name: int_lkp_f01151
+    description: "Lookup on F01151 table to get EAETP and EAEMAL column based on EAAN8"
+    columns:
+      - name: in_ulan8
+        description: "Input ULAN8 for lookup"
+      - name: eaetp
+        description: "Electronic Address Type"
+      - name: eaemal
+        description: "Electronic Address - Email"
+
+  - name: int_exp_flag
+    description: "Set Flag based on GLDCT, GLDOC, GLKCO, GLDGJ, GLLT, GLJELN"
+    columns:
+      - name: out_flag
+        description: "Flag indicating data validity"
+        tests:
+          - accepted_values:
+              values: ['Y', 'N']
+
+  - name: int_exp_replace_trim
+    description: "Checking for null values and replacing double quotes with trim operation"
+    columns:
+      - name: out_gldct
+        description: "Cleaned GLDCT field"
+      - name: out_gldoc
+        description: "Cleaned GLDOC field"
+      - name: out_glkco
+        description: "Cleaned GLKCO field"
+
+  - name: int_exp_replace
+    description: "Checking for null values and replacing double quotes"
+    
+  - name: int_exp_email
+    description: "Calculate Email field and etl_load_date"
+    columns:
+      - name: etl_load_dte
+        description: "ETL Load Date"
+        tests:
+          - not_null
+
+  - name: int_exp_trim
+    description: "Expression for trim logic for fields"
+
+  - name: int_exp_pass_through
+    description: "Pass through the columns"
+
+  - name: int_exp_filename
+    description: "Generating the filename dynamically to append the timestamp"
+    columns:
+      - name: out_filename
+        description: "Generated filename with timestamp"
+        tests:
+          - not_null
+# --- From wf_BL_FF_ZJ_JOURNALS_STG.XML ---
+
+models:
+  - name: int_journals_enriched
+    description: "Intermediate model: Journals enriched with account descriptions and email addresses"
+    columns:
+      - name: document_key
+        description: "Composite key for document identification"
+        tests:
+          - not_null
+      - name: journal_line_key
+        description: "Composite key for journal line identification"
+        tests:
+          - not_null
+      - name: company_code
+        description: "Company code"
+        tests:
+          - not_null
+      - name: document_type
+        description: "Document type code"
+      - name: document_number
+        description: "Document number"
+      - name: gl_date
+        description: "General ledger date"
+      - name: account_number
+        description: "Account number"
+      - name: account_description
+        description: "Account description from master"
+      - name: amount
+        description: "Transaction amount"
+      - name: user_email
+        description: "User email address"

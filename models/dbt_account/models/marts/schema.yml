@@ -1,0 +1,93 @@
+# From wf_FF_AT_Z1_GL_ACCOUNT.XML
+version: 2
+
+models:
+  - name: fct_ff_at_z1_gl_account
+    description: "Fact table for GL Account flat file export - contains financial transaction data"
+    columns:
+      - name: posting_date
+        description: "Posting date of the transaction"
+        tests:
+          - not_null
+      - name: fiscal_year
+        description: "Fiscal year of the transaction"
+        tests:
+          - not_null
+      - name: fiscal_period
+        description: "Fiscal period of the transaction"
+        tests:
+          - not_null
+      - name: doc_num
+        description: "Document number"
+        tests:
+          - not_null
+      - name: doc_line
+        description: "Document line number"
+        tests:
+          - not_null
+      - name: account
+        description: "GL account number"
+        tests:
+          - not_null
+      - name: company_code
+        description: "Company code"
+        tests:
+          - not_null
+      - name: amount_in_document_currency
+        description: "Transaction amount in document currency"
+      - name: amount_in_local_currency
+        description: "Transaction amount in local currency"
+      - name: loaded_at
+        description: "Timestamp when record was loaded"
+        tests:
+          - not_null
+# --- From wf_FF_AT_ZJ_GL_ACCOUNT.XML ---
+
+models:
+  - name: fct_ff_at_zj_gl_account
+    description: "Fact table: FF_AT_ZJ_GL_ACCOUNT - Final GL account data ready for flat file export"
+    columns:
+      - name: account
+        description: "GL Account Number"
+      - name: cost_center
+        description: "Cost Center"
+      - name: journal_id
+        description: "Journal/Document ID"
+      - name: document_type
+        description: "Document Type"
+      - name: journal_line_id
+        description: "Journal Line ID"
+      - name: vendor_id
+        description: "Vendor ID"
+      - name: vendor_name
+        description: "Vendor Name"
+      - name: account_description
+        description: "Account Description"
+      - name: currency_code_base
+        description: "Base Currency Code"
+      - name: currency_code_from
+        description: "From Currency Code"
+      - name: journal_line_description
+        description: "Journal Line Description (cleaned)"
+      - name: remark_explanation
+        description: "Remark/Explanation (cleaned)"
+      - name: subledger_gl
+        description: "Subledger G/L"
+      - name: purchase_order
+        description: "Purchase Order"
+      - name: supplier_invoice
+        description: "Supplier Invoice"
+      - name: posting_date
+        description: "Posting Date (YYYYMMDD format)"
+      - name: fiscal_year_period
+        description: "Fiscal Year/Period"
+      - name: source_erp
+        description: "Source ERP System"
+      - name: amount
+        description: "Transaction Amount"
+      - name: local_amount
+        description: "Local Currency Amount"
+      - name: loaded_at
+        description: "Timestamp when record was loaded"
+        tests:
+          - not_null

@@ -1,0 +1,89 @@
+# From wf_FF_AT_Z1_GL_ACCOUNT.XML
+version: 2
+
+models:
+  - name: stg_zb_reporting_finance_global_apptio_gb_z1_appt
+    description: "Staging model for BW financial reporting data"
+    columns:
+      - name: postingdateinthedocument
+        description: "Posting date in the document"
+        tests:
+          - not_null
+      - name: accountingdocumentnumber
+        description: "Accounting document number"
+        tests:
+          - not_null
+      - name: numoflineitemwithinaccountdoc
+        description: "Line item number within accounting document"
+        tests:
+          - not_null
+      - name: companycode
+        description: "Company code"
+        tests:
+          - not_null
+      - name: fiscalyear
+        description: "Fiscal year"
+        tests:
+          - not_null
+      - name: amountinlocalcurrency
+        description: "Amount in local currency"
+      - name: amountindocumentcurrency
+        description: "Amount in document currency"
+# --- From wf_FF_AT_ZJ_GL_ACCOUNT.XML ---
+
+models:
+  - name: stg_zjglaptin
+    description: "Staging model for SAP BW GL Account Input data"
+    columns:
+      - name: ohrequid
+        description: "OH Request ID"
+        tests:
+          - not_null
+      - name: datapakid
+        description: "Data Package ID"
+        tests:
+          - not_null
+      - name: record
+        description: "Data Record number"
+        tests:
+          - not_null
+      - name: glani_zj
+        description: "GL Account Number"
+      - name: glmcu_zj
+        description: "Cost Center"
+      - name: gldoc_zj
+        description: "Document Number"
+      - name: gldct_zj
+        description: "Document Type"
+      - name: gljeln_zj
+        description: "Journal Line Number"
+      - name: vendor_id_zj
+        description: "Vendor ID"
+      - name: vendor_name_zj
+        description: "Vendor Name"
+      - name: gmdl01_zj
+        description: "Account Description"
+      - name: glbcrc_zj
+        description: "Base Currency Code"
+      - name: glcrcd_zj
+        description: "From Currency Code"
+      - name: line_desc_zj
+        description: "Line Description"
+      - name: glexr_zj
+        description: "Explanation/Remark"
+      - name: glsbl_zj
+        description: "Subledger"
+      - name: glpo_zj
+        description: "Purchase Order"
+      - name: glvinv_zj
+        description: "Vendor Invoice"
+      - name: gldgj_zj
+        description: "Posting Date"
+      - name: fiscal_per_zj
+        description: "Fiscal Period"
+      - name: desc_long_zj
+        description: "Long Description"
+      - name: amount_zj
+        description: "Amount"
+      - name: amount_loc_zj
+        description: "Local Amount"

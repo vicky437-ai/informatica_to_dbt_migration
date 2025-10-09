@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: fct_ap_citibank_vca_export
+    description: "Fact table: Citibank VCA data prepared for flat file export"
+    columns:
+      - name: action_type
+        description: "Type of action being performed"
+      - name: record_id
+        description: "Unique record identifier"
+        tests:
+          - not_null
+      - name: issuer_id
+        description: "Card issuer identifier"
+      - name: ica_number
+        description: "ICA number (renamed from ica_nbr)"
+      - name: bank_number
+        description: "Bank number (renamed from bank_nbr)"
+      - name: user_name
+        description: "User name"
+      - name: request_id
+        description: "Request identifier"
+      - name: min_purchase_amount
+        description: "Minimum purchase amount"
+      - name: max_purchase_amount
+        description: "Maximum purchase amount"
+      - name: purchase_currency
+        description: "Purchase currency"
+      - name: purchase_type
+        description: "Purchase type"
+      - name: v_card_alias
+        description: "Virtual card alias"
+      - name: supplier_name
+        description: "Supplier name"
+      - name: supplier_email
+        description: "Supplier email"
+      - name: multi_use
+        description: "Multi-use indicator"
+      - name: valid_from
+        description: "Formatted validity start date"
+      - name: valid_to
+        description: "Formatted validity end date"
+      - name: valid_for
+        description: "Validity period"
+      - name: cdf_payment_number
+        description: "CDF payment number"
+      - name: cdf_payee_number
+        description: "CDF payee number"
+      - name: cdf_payment_amount
+        description: "CDF payment amount"
+      - name: cdf_payment_date
+        description: "CDF payment date"
+      - name: cdf_payee_name
+        description: "CDF payee name"
+      - name: file_name
+        description: "Generated filename for export"
+      - name: loaded_at
+        description: "DBT processing timestamp"
+        tests:
+          - not_null

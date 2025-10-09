@@ -1,0 +1,59 @@
+version: 2
+
+sources:
+  - name: t_ap
+    description: "Accounts Payable source system - T_AP schema"
+    database: oracle_db
+    schema: t_ap
+    tables:
+      - name: t_ap_citibank_vca
+        description: "Citibank VCA (Virtual Card Account) source table"
+        columns:
+          - name: action_type
+            description: "Type of action being performed"
+          - name: record_id
+            description: "Unique record identifier"
+          - name: issuer_id
+            description: "Card issuer identifier"
+          - name: ica_nbr
+            description: "ICA (Interbank Card Association) number"
+          - name: bank_nbr
+            description: "Bank number"
+          - name: user_name
+            description: "User name associated with the card"
+          - name: request_id
+            description: "Request identifier"
+          - name: min_purchase_amt
+            description: "Minimum purchase amount allowed"
+          - name: max_purchase_amt
+            description: "Maximum purchase amount allowed"
+          - name: purchase_currency
+            description: "Currency for purchases"
+          - name: purchase_type
+            description: "Type of purchase allowed"
+          - name: v_card_alias
+            description: "Virtual card alias"
+          - name: supplier_name
+            description: "Name of the supplier"
+          - name: supplier_email
+            description: "Email address of the supplier"
+          - name: multi_use
+            description: "Flag indicating if card can be used multiple times"
+          - name: valid_from
+            description: "Card validity start date"
+          - name: valid_to
+            description: "Card validity end date"
+          - name: valid_for
+            description: "Validity period description"
+          - name: cdf_payment_number
+            description: "CDF payment number"
+          - name: cdf_payee_number
+            description: "CDF payee number"
+          - name: cdf_payment_amount
+            description: "CDF payment amount"
+          - name: cdf_payment_date
+            description: "CDF payment date"
+          - name: cdf_payee_name
+            description: "CDF payee name"
+          - name: etl_load_dte
+            description: "ETL load timestamp"

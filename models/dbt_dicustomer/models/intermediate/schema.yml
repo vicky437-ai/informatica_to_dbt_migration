@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: int_sq_customer
+    description: "Source qualifier: Combines customer data from multiple sources"
+    columns:
+      - name: cust_nbr
+        description: "Customer number"
+        tests:
+          - not_null
+      - name: ptnr_cust_nbr
+        description: "Partner customer number"
+      - name: name_1
+        description: "Customer name"
+
+  - name: int_exp_exptrans
+    description: "Expression transformation: Applies initial business logic"
+    columns:
+      - name: cust_nbr
+        description: "Customer number"
+        tests:
+          - not_null
+      - name: o_central_ordr_blk
+        description: "Transformed central order block indicator"
+
+  - name: int_lkp_bus_ptnr_ids
+    description: "Lookup transformation: Enriches with business partner IDs"
+    columns:
+      - name: cust_nbr
+        description: "Customer number"
+      - name: bus_id_nbr
+        description: "Business ID number from lookup"
+
+  - name: int_exp_data
+    description: "Final expression transformation: Prepares data for target"
+    columns:
+      - name: out_cust_nbr
+        description: "Output customer number"
+      - name: out_name_1
+        description: "Output customer name"
+      - name: out_acct_recvbl_offc_cde
+        description: "Account receivable office code"

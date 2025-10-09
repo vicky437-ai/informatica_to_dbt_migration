@@ -1,0 +1,77 @@
+version: 2
+
+sources:
+  - name: stg_mdg_cust
+    description: "Source system: STG_MDG_CUST - Customer Master Data"
+    database: "{{ var('stg_mdg_cust_schema') }}"
+    schema: STG_MDG_CUST
+    tables:
+      - name: cust_master
+        description: "Customer master data table"
+        columns:
+          - name: cust_nbr
+            description: "Customer number - Primary key"
+            tests:
+              - unique
+              - not_null
+          - name: cntry_key
+            description: "Country key"
+          - name: city
+            description: "City name"
+          - name: po_cd
+            description: "Postal code"
+          - name: region_key
+            description: "Region key"
+          - name: street
+            description: "Street address"
+          - name: central_ordr_blk
+            description: "Central order block indicator"
+          - name: attribute_9
+            description: "Customer attribute 9"
+
+      - name: ptnr_fctn
+        description: "Partner function data"
+        columns:
+          - name: cust_nbr
+            description: "Customer number - Foreign key"
+            tests:
+              - not_null
+          - name: sales_org_id
+            description: "Sales organization ID"
+          - name: dstrbtn_chnl
+            description: "Distribution channel"
+          - name: division
+            description: "Division"
+          - name: ptnr_fctn_id
+            description: "Partner function ID"
+          - name: ptnr_cntr
+            description: "Partner counter"
+          - name: ptnr_cust_nbr
+            description: "Partner customer number"
+
+      - name: cust_adrs
+        description: "Customer address data"
+        columns:
+          - name: adrs_nbr
+            description: "Address number - Primary key"
+            tests:
+              - unique
+              - not_null
+          - name: vld_frm_dt
+            description: "Valid from date"
+          - name: cust_nbr
+            description: "Customer number - Foreign key"
+          - name: name_1
+            description: "Customer name line 1"
+          - name: city
+            description: "City name"
+          - name: region_key
+            description: "Region key"
+          - name: po_cd
+            description: "Postal code"
+          - name: strt_1
+            description: "Street address line 1"
+          - name: strt_2
+            description: "Street address line 2"
+          - name: strt_3
+            description: "Street address line 3"

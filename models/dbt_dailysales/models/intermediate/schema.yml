@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: int_sq_t_cm_z1_sales
+    description: "Source qualifier for T_CM_Z1_SALES - applies source filtering and column selection"
+    columns:
+      - name: ordernumber
+        description: "Order number"
+        tests:
+          - not_null
+      - name: invoicenumber
+        description: "Invoice number"
+      - name: sourcesystem
+        description: "Source system identifier"
+        tests:
+          - not_null
+      - name: customernumber
+        description: "Customer number"
+      - name: itemnumber
+        description: "Item number"
+
+  - name: int_exp_data_pass_through
+    description: "Expression transformation - converts numeric and date columns to strings with tab removal"
+    columns:
+      - name: salestrxid
+        description: "Sales transaction ID (generated)"
+      - name: out_ordernumber
+        description: "Cleaned order number"
+      - name: out_invoicenumber
+        description: "Cleaned invoice number"
+      - name: out_invoicedate
+        description: "Formatted invoice date (MM/DD/YYYY)"
+      - name: out_sourcesystem
+        description: "Cleaned source system"
+      - name: out_customernumber
+        description: "Cleaned customer number"
+      - name: out_unitsaleprice
+        description: "Unit sale price as string"
+      - name: out_quantityshipped
+        description: "Quantity shipped as string"

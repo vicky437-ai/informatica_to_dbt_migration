@@ -1,0 +1,55 @@
+version: 2
+
+models:
+  - name: stg_cust_master
+    description: "Staging model for customer master data"
+    columns:
+      - name: cust_nbr
+        description: "Customer number"
+        tests:
+          - not_null
+          - unique
+      - name: attribute_9
+        description: "Customer attribute 9 for classification"
+      - name: central_ordr_blk
+        description: "Central order block indicator"
+      - name: etl_load_dt
+        description: "ETL load timestamp"
+
+  - name: stg_ptnr_fctn
+    description: "Staging model for partner function data"
+    columns:
+      - name: cust_nbr
+        description: "Customer number"
+        tests:
+          - not_null
+      - name: ptnr_cust_nbr
+        description: "Partner customer number"
+      - name: etl_load_dt
+        description: "ETL load timestamp"
+
+  - name: stg_cust_adrs
+    description: "Staging model for customer address data"
+    columns:
+      - name: adrs_nbr
+        description: "Address number"
+        tests:
+          - not_null
+      - name: cust_nbr
+        description: "Customer number"
+      - name: name_1
+        description: "Customer name"
+      - name: city
+        description: "City name"
+      - name: region_key
+        description: "Region key"
+      - name: po_cd
+        description: "Postal code"
+      - name: strt_1
+        description: "Street address line 1"
+      - name: strt_2
+        description: "Street address line 2"
+      - name: strt_3
+        description: "Street address line 3"
+      - name: etl_load_dt
+        description: "ETL load timestamp"

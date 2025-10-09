@@ -1,0 +1,144 @@
+version: 2
+
+sources:
+  - name: t_cm
+    description: "Commission Management source system"
+    database: "{{ var('source_database', 'T_CM') }}"
+    schema: "{{ var('source_schema', 'T_CM') }}"
+    tables:
+      - name: t_cm_z1_sales
+        description: "Daily sales transactions for Z1 business segment"
+        columns:
+          - name: t_cm_z1_sales_id
+            description: "Primary key for sales transaction"
+            tests:
+              - unique
+              - not_null
+          - name: ordernumber
+            description: "Order number"
+          - name: lineitemnumber
+            description: "Line item number within order"
+          - name: invoicenumber
+            description: "Invoice number"
+          - name: invoicedate
+            description: "Invoice date"
+          - name: sourcesystem
+            description: "Source system identifier"
+          - name: businesssegment
+            description: "Business segment code"
+          - name: businesssegmentdescription
+            description: "Business segment description"
+          - name: surgerydate
+            description: "Surgery date"
+          - name: customernumber
+            description: "Customer number"
+          - name: customernumbershipto
+            description: "Ship-to customer number"
+          - name: customername
+            description: "Customer name"
+          - name: txncustomernumber
+            description: "Transaction customer number"
+          - name: txncustomername
+            description: "Transaction customer name"
+          - name: customerpattern
+            description: "Customer pattern code"
+          - name: customerpo
+            description: "Customer purchase order"
+          - name: surgeonid
+            description: "Surgeon identifier"
+          - name: surgeonname
+            description: "Surgeon name"
+          - name: txnsurgeonid
+            description: "Transaction surgeon ID"
+          - name: txnsurgeonname
+            description: "Transaction surgeon name"
+          - name: itemnumber
+            description: "Item number"
+          - name: itemdescription
+            description: "Item description"
+          - name: salesadjustmentname
+            description: "Sales adjustment name"
+          - name: salesadjustmenttype
+            description: "Sales adjustment type"
+          - name: rafinvoicedate
+            description: "RAF invoice date"
+          - name: itemclass
+            description: "Item class code"
+          - name: itemclassdescription
+            description: "Item class description"
+          - name: unitsaleprice
+            description: "Unit sale price"
+          - name: quantityshipped
+            description: "Quantity shipped"
+          - name: unitlistprice
+            description: "Unit list price"
+          - name: county
+            description: "County code"
+          - name: txncounty
+            description: "Transaction county"
+          - name: countydescription
+            description: "County description"
+          - name: territoryid
+            description: "Territory ID"
+          - name: trxterritoryid
+            description: "Transaction territory ID"
+          - name: trxterritoryname
+            description: "Transaction territory name"
+          - name: trxsalesrepnumber
+            description: "Transaction sales rep number"
+          - name: trxsalesrepname
+            description: "Transaction sales rep name"
+          - name: contractnumber
+            description: "Contract number"
+          - name: contractname
+            description: "Contract name"
+          - name: pricingpenaltyproration
+            description: "Pricing penalty proration"
+          - name: commissioncode
+            description: "Commission code"
+          - name: ordertype
+            description: "Order type"
+          - name: transferordertype
+            description: "Transfer order type"
+          - name: transactiontypecode
+            description: "Transaction type code"
+          - name: costcenter
+            description: "Cost center"
+          - name: z_to_zindicator
+            description: "Z to Z indicator"
+          - name: transportationdistributor
+            description: "Transportation distributor amount"
+          - name: transportationzimmer
+            description: "Transportation Zimmer amount"
+          - name: acctsreceivablevalue
+            description: "Accounts receivable value"
+          - name: customerfreight
+            description: "Customer freight amount"
+          - name: restockfee
+            description: "Restock fee"
+          - name: adjdetailreporttablenum
+            description: "Adjustment detail report table number"
+          - name: specialcharges
+            description: "Special charges"
+          - name: salestax
+            description: "Sales tax amount"
+          - name: othertaxes
+            description: "Other taxes"
+          - name: transactionheader
+            description: "Transaction header"
+          - name: customertype
+            description: "Customer type"
+          - name: etl_md5
+            description: "ETL MD5 hash"
+          - name: etl_updt_flg
+            description: "ETL update flag"
+          - name: etl_create_dte
+            description: "ETL create date"
+          - name: etl_load_dte
+            description: "ETL load date"
+          - name: shipviadesc
+            description: "Ship via description"
+          - name: sms_case_number
+            description: "SMS case number"
+          - name: trailerrecord_yn
+            description: "Trailer record indicator"

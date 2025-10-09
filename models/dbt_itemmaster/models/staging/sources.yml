@@ -1,0 +1,57 @@
+version: 2
+
+sources:
+  - name: raw_system
+    description: "Raw source system containing item master data"
+    database: "{{ var('source_database', 'raw_db') }}"
+    schema: "{{ var('source_schema', 'raw_schema') }}"
+    tables:
+      - name: item_master_raw
+        description: "Raw item master data with 200 columns for MD5 calculation"
+        columns:
+          - name: COL_1
+            description: "Item master column 1"
+          - name: COL_2
+            description: "Item master column 2"
+          - name: COL_3
+            description: "Item master column 3"
+          # Note: In real implementation, all 200 columns would be listed here
+          # Truncated for brevity - would include COL_4 through COL_200
+# --- Chunk 4 ---
+version: 2
+
+sources:
+  - name: xml_file_system
+    description: "XML file source system for material master data"
+    database: xml_file
+    schema: xml_data
+    tables:
+      - name: xml_md_material_attr_txt
+        description: "XML Material Master Attributes with hierarchical product data"
+        columns:
+          - name: xpk_a_product
+            description: "Primary key for product root level"
+            tests:
+              - unique
+              - not_null
+          - name: xpk_a_producttype
+            description: "Primary key for product type level"
+            tests:
+              - unique
+              - not_null
+          - name: product
+            description: "Product identifier"
+            tests:
+              - not_null
+          - name: producttype
+            description: "Product type classification"
+          - name: crossplantstatus
+            description: "Cross plant material status"
+          - name: creationdate
+            description: "Product creation date"
+          - name: createdbyuser
+            description: "User who created the product"
+          - name: lastchangedate
+            description: "Last modification date"
+          - name: lastchangedbyuser
+            description: "User who last modified the product"

@@ -1,0 +1,410 @@
+# From wf_BL_FF_ZJ_JOURNALS.XML
+version: 2
+
+sources:
+  - name: blackline_files
+    description: "Blackline flat file source system for journal entries"
+    tables:
+      - name: ff_bl_zj_journals_src
+        description: "Blackline journal entries flat file source"
+        columns:
+          - name: batch_number
+            description: "Batch number identifier"
+          - name: batch_type
+            description: "Type of batch"
+          - name: document_type
+            description: "Document type code"
+          - name: document_number
+            description: "Document number"
+          - name: document_company
+            description: "Document company code"
+          - name: gl_date
+            description: "General ledger date (Julian format)"
+          - name: currency
+            description: "Currency code"
+          - name: foreign_domestic
+            description: "Foreign/Domestic indicator"
+          - name: batch_date
+            description: "Batch date (Julian format)"
+          - name: amount_entered
+            description: "Amount entered in transaction"
+          - name: batch_status
+            description: "Status of the batch"
+          - name: gltorg_user_id
+            description: "GL transaction originator user ID"
+          - name: explanation_alpha
+            description: "Alpha explanation text"
+          - name: ledger_type
+            description: "Ledger type code"
+          - name: journal_entry_line_number
+            description: "Journal entry line number"
+          - name: line_extension_code
+            description: "Line extension code"
+          - name: account_number
+            description: "Account number"
+          - name: account_description
+            description: "Account description"
+          - name: company
+            description: "Company code"
+          - name: amount
+            description: "Transaction amount"
+          - name: explanation_remark
+            description: "Explanation remark text"
+          - name: subledger_type
+            description: "Subledger type"
+          - name: subledger
+            description: "Subledger identifier"
+          - name: gl_posted_code
+            description: "GL posted code"
+          - name: reverse_void
+            description: "Reverse/Void indicator"
+          - name: reconciled_code
+            description: "Reconciled code"
+          - name: purchase_order
+            description: "Purchase order number"
+          - name: asset_number
+            description: "Asset number"
+          - name: gluser_user_id
+            description: "GL user ID"
+          - name: date_updated
+            description: "Date updated (Julian format)"
+          - name: time_last_updated
+            description: "Time last updated"
+          - name: email
+            description: "Email address"
+          - name: filename
+            description: "Source filename"
+# --- Chunk 2 ---
+version: 2
+
+sources:
+  - name: jde_system
+    description: "JDE Enterprise Resource Planning System"
+    database: "{{ var('source_schema') }}"
+    schema: "{{ var('source_schema') }}"
+    tables:
+      - name: f0011
+        description: "JDE Account Balances table"
+        columns:
+          - name: icicu
+            description: "Item Cost - Item Unit Cost"
+            tests:
+              - not_null
+          - name: icicut
+            description: "Item Cost - Item Unit Cost Type"
+          - name: icame
+            description: "Item Cost - Amount Entered"
+          - name: icist
+            description: "Item Cost - Item Status"
+
+      - name: f0911
+        description: "JDE Account Ledger table"
+        columns:
+          - name: glicu
+            description: "General Ledger - Item Unit Cost"
+          - name: glicut
+            description: "General Ledger - Item Unit Cost Type"
+          - name: gldct
+            description: "General Ledger - Document Type"
+            tests:
+              - not_null
+          - name: gldoc
+            description: "General Ledger - Document Number"
+            tests:
+              - not_null
+          - name: glkco
+            description: "General Ledger - Company"
+            tests:
+              - not_null
+          - name: gldgj
+            description: "General Ledger - Date - G/L"
+          - name: gllt
+            description: "General Ledger - Ledger Type"
+            tests:
+              - not_null
+          - name: gljeln
+            description: "General Ledger - Journal Entry Line Number"
+            tests:
+              - not_null
+          - name: glpost
+            description: "General Ledger - Posted Code"
+
+      - name: f0901
+        description: "JDE Account Master table"
+        columns:
+          - name: gmaid
+            description: "General Master - Account ID"
+          - name: gmdl01
+            description: "General Master - Description Line 01"
+
+  - name: staging_system
+    description: "Staging database for intermediate processing"
+    database: "{{ var('staging_schema') }}"
+    schema: "{{ var('staging_schema') }}"
+    tables:
+      - name: s_zj_journals
+        description: "Staging table for ZJ Journals"
+        columns:
+          - name: f0911_gldct
+            description: "Document Type from F0911"
+          - name: f0911_gldoc
+            description: "Document Number from F0911"
+          - name: f0911_glkco
+            description: "Company from F0911"
+          - name: f0911_gllt
+            description: "Ledger Type from F0911"
+          - name: f0911_gljeln
+            description: "Journal Entry Line Number from F0911"
+
+  - name: lookup_system
+    description: "Lookup tables for data enrichment"
+    database: "{{ var('source_schema') }}"
+    schema: "{{ var('source_schema') }}"
+    tables:
+      - name: f0092
+        description: "User Profile table"
+        columns:
+          - name: uluser
+            description: "User ID"
+          - name: ulan8
+            description: "Address Number"
+
+      - name: f01151
+        description: "Electronic Address table"
+        columns:
+          - name: eaan8
+            description: "Address Number"
+          - name: eaidln
+            description: "Address ID Line Number"
+          - name: eaetp
+            description: "Electronic Address Type"
+          - name: eaemal
+            description: "Electronic Address - Email"
+
+  - name: file_system
+    description: "File-based data sources"
+    tables:
+      - name: ff_bl_zj_journals_src
+        description: "Flat file source for BL ZJ Journals"
+        columns:
+          - name: batch_number
+            description: "Batch Number"
+          - name: batch_type
+            description: "Batch Type"
+          - name: document_type
+            description: "Document Type"
+          - name: document_number
+            description: "Document Number"
+          - name: email
+            description: "Email Address"
+# --- Chunk 3 ---
+version: 2
+
+sources:
+  - name: crpdta
+    description: "JDE Enterprise Resource Planning (ERP) system - Production Data"
+    database: crpdta
+    schema: crpdta
+    tables:
+      - name: f0901
+        description: "Account Master - Contains chart of accounts and account setup information"
+        columns:
+          - name: gmaid
+            description: "Account ID - Primary key"
+            tests:
+              - unique
+              - not_null
+          - name: gmco
+            description: "Company code"
+          - name: gmmcu
+            description: "Business unit"
+          - name: gmobj
+            description: "Object account"
+          - name: gmsub
+            description: "Subsidiary account"
+          
+      - name: f0911
+        description: "Account Ledger - Contains all general ledger transactions"
+        columns:
+          - name: glkco
+            description: "Company code - Part of primary key"
+            tests:
+              - not_null
+          - name: gldct
+            description: "Document type - Part of primary key"
+            tests:
+              - not_null
+          - name: gldoc
+            description: "Document number - Part of primary key"
+            tests:
+              - not_null
+          - name: gldgj
+            description: "G/L date - Part of primary key"
+            tests:
+              - not_null
+          - name: gljeln
+            description: "Journal entry line number - Part of primary key"
+            tests:
+              - not_null
+          - name: glextl
+            description: "Extension line number - Part of primary key"
+            tests:
+              - not_null
+          - name: gllt
+            description: "Ledger type - Part of primary key"
+            tests:
+              - not_null
+          - name: glaa
+            description: "Posted amount"
+          - name: globj
+            description: "Object account"
+          - name: glsub
+            description: "Subsidiary account"
+            
+      - name: f0011
+        description: "Intercompany Constants - Contains intercompany setup and balancing rules"
+        columns:
+          - name: icicut
+            description: "Intercompany transaction type - Part of primary key"
+            tests:
+              - not_null
+          - name: icicu
+            description: "Intercompany business unit - Part of primary key"
+            tests:
+              - not_null
+          - name: icist
+            description: "Intercompany status"
+          - name: iciapp
+            description: "Intercompany application"
+# --- From wf_BL_FF_ZJ_JOURNALS_STG.XML ---
+
+sources:
+  - name: jde_source
+    description: "JD Edwards source system for journal entries"
+    database: "{{ var('source_database', 'JDE_PROD') }}"
+    schema: "{{ var('source_schema', 'PRODDTA') }}"
+    tables:
+      - name: f0911
+        description: "Account Ledger table - Journal entries"
+        columns:
+          - name: gldct
+            description: "Document Type"
+            tests:
+              - not_null
+          - name: gldoc
+            description: "Document Number"
+            tests:
+              - not_null
+          - name: glkco
+            description: "Company"
+            tests:
+              - not_null
+          - name: gldgj
+            description: "G/L Date"
+            tests:
+              - not_null
+          - name: gllt
+            description: "Ledger Type"
+            tests:
+              - not_null
+          - name: gljeln
+            description: "Journal Entry Line Number"
+            tests:
+              - not_null
+              
+      - name: f0901
+        description: "Account Master table"
+        columns:
+          - name: gmco
+            description: "Company"
+          - name: gmobj
+            description: "Object Account"
+          - name: gmdl01
+            description: "Description"
+            
+      - name: f0011
+        description: "Address Book Master"
+        columns:
+          - name: ican8
+            description: "Address Number"
+          - name: icame
+            description: "Mailing Name"
+          - name: icist
+            description: "Status"
+            
+      - name: f01151
+        description: "Address Book - Electronic Address"
+        columns:
+          - name: eaan8
+            description: "Address Number"
+          - name: eaemal
+            description: "Email Address"
+# --- Chunk 3 ---
+version: 2
+
+sources:
+  - name: crpdta
+    description: "JDE source system - CRPDTA schema"
+    database: crpdta
+    schema: crpdta
+    tables:
+      - name: f0901
+        description: "Account Master table"
+        columns:
+          - name: gmaid
+            description: "Account ID - Primary key"
+            tests:
+              - unique
+              - not_null
+          - name: gmco
+            description: "Company code"
+          - name: gmmcu
+            description: "Business unit"
+          - name: gmobj
+            description: "Object account"
+          - name: gmsub
+            description: "Subsidiary account"
+          
+      - name: f0911
+        description: "Account Ledger table"
+        columns:
+          - name: glkco
+            description: "Company code - Primary key"
+            tests:
+              - not_null
+          - name: gldct
+            description: "Document type - Primary key"
+            tests:
+              - not_null
+          - name: gldoc
+            description: "Document number - Primary key"
+            tests:
+              - not_null
+          - name: gldgj
+            description: "G/L date - Primary key"
+            tests:
+              - not_null
+          - name: gljeln
+            description: "Journal entry line number - Primary key"
+            tests:
+              - not_null
+          - name: glextl
+            description: "Extension line number - Primary key"
+            tests:
+              - not_null
+          - name: gllt
+            description: "Ledger type - Primary key"
+            tests:
+              - not_null
+              
+      - name: f0011
+        description: "Intercompany Constants table"
+        columns:
+          - name: icicut
+            description: "Intercompany unit type - Primary key"
+            tests:
+              - not_null
+          - name: icicu
+            description: "Intercompany unit - Primary key"
+            tests:
+              - not_null

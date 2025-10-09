@@ -1,0 +1,52 @@
+-- Expression: exp_PASSTHROUGH
+-- Adds ETL load timestamp and passes through all columns
+-- Equivalent to Informatica Expression transformation
+
+select
+    -- Pass through all existing columns
+    lhspcd,
+    lhspno,
+    lhsptk,
+    lhtrbk,
+    lhegcd,
+    lhedsq,
+    lhcscd,
+    lhhpcd,
+    lhsptp,
+    lhtacd,
+    lhspnd,
+    lhnyyd,
+    lhrcdt,
+    lhpayk,
+    lhdda1,
+    lhdda2,
+    lhspat,
+    lhtaxm,
+    lhaskm,
+    lhrsdt,
+    lhtaxh,
+    lhrsam,
+    lhslcd,
+    lhctax,
+    lhchom,
+    lhtden,
+    lhtded,
+    lhrcrm,
+    lhdlkb,
+    lhodno,
+    lhkhst,
+    lhnksf,
+    lhspnk,
+    lhnyuf,
+    lhtaxf,
+    lhsefg,
+    lhsedt,
+    lhhryu,
+    lhdltf,
+    lhrldt,
+    lhrltm,
+    lhrlur,
+    lhrlpg,
+    -- Add ETL load timestamp (equivalent to SYSDATE in Informatica)
+    current_timestamp() as etl_load_dte
+from {{ ref('int_sq_arurhd') }}

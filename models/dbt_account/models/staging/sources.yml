@@ -1,0 +1,125 @@
+# From wf_FF_AT_Z1_GL_ACCOUNT.XML
+version: 2
+
+sources:
+  - name: gbi_system
+    description: "GBI source system containing financial data"
+    database: GBI
+    schema: _SYS_BIC
+    tables:
+      - name: zb_reporting_finance_global_apptio_gb_z1_appt
+        description: "BW Datasource for GL Account reporting data"
+        columns:
+          - name: postingdateinthedocument
+            description: "Posting date in the document"
+          - name: costcenter
+            description: "Cost center"
+          - name: localcurrency
+            description: "Local currency code"
+          - name: glaccountnumber
+            description: "GL account number"
+          - name: fiscalyear
+            description: "Fiscal year"
+          - name: purchasingdocumentnumber
+            description: "Purchasing document number"
+          - name: accountingdocumentnumber
+            description: "Accounting document number"
+          - name: numoflineitemwithinaccountdoc
+            description: "Number of line item within account document"
+          - name: companycode
+            description: "Company code"
+          - name: glaccountlongname
+            description: "GL account long name"
+          - name: accountnumofvendororcreditor
+            description: "Account number of vendor or creditor"
+          - name: supplierfullname
+            description: "Supplier full name"
+          - name: debitcreditindicator
+            description: "Debit/Credit indicator"
+          - name: invoice_reference
+            description: "Invoice reference"
+          - name: itemtext
+            description: "Item text"
+          - name: currencykey
+            description: "Currency key"
+          - name: projectdefinition
+            description: "Project definition"
+          - name: wbs
+            description: "Work breakdown structure"
+          - name: documenttype
+            description: "Document type"
+          - name: source_desc_long
+            description: "Source description long"
+          - name: fiscalperiod
+            description: "Fiscal period"
+          - name: amountinlocalcurrency
+            description: "Amount in local currency"
+          - name: amountindocumentcurrency
+            description: "Amount in document currency"
+          - name: amount_dc
+            description: "Amount DC"
+          - name: amount_lc
+            description: "Amount LC"
+# --- From wf_FF_AT_ZJ_GL_ACCOUNT.XML ---
+
+sources:
+  - name: sapbwohs
+    description: "SAP BW OHS source system for GL account data"
+    database: sapbwohs
+    schema: sapbwohs
+    tables:
+      - name: zjglaptin
+        description: "SAP BW GL Account Input table - source for GL account transactions"
+        columns:
+          - name: ohrequid
+            description: "OH Request ID"
+            tests:
+              - not_null
+          - name: datapakid
+            description: "Data Package ID"
+            tests:
+              - not_null
+          - name: record
+            description: "Data Record number"
+            tests:
+              - not_null
+          - name: glani_zj
+            description: "GL Account Number"
+          - name: glmcu_zj
+            description: "Cost Center"
+          - name: gldoc_zj
+            description: "Document Number"
+          - name: gldct_zj
+            description: "Document Type"
+          - name: gljeln_zj
+            description: "Journal Line Number"
+          - name: vendor_id_zj
+            description: "Vendor ID"
+          - name: vendor_name_zj
+            description: "Vendor Name"
+          - name: gmdl01_zj
+            description: "Account Description"
+          - name: glbcrc_zj
+            description: "Base Currency Code"
+          - name: glcrcd_zj
+            description: "From Currency Code"
+          - name: line_desc_zj
+            description: "Line Description"
+          - name: glexr_zj
+            description: "Explanation/Remark"
+          - name: glsbl_zj
+            description: "Subledger"
+          - name: glpo_zj
+            description: "Purchase Order"
+          - name: glvinv_zj
+            description: "Vendor Invoice"
+          - name: gldgj_zj
+            description: "Posting Date"
+          - name: fiscal_per_zj
+            description: "Fiscal Period"
+          - name: desc_long_zj
+            description: "Long Description"
+          - name: amount_zj
+            description: "Amount"
+          - name: amount_loc_zj
+            description: "Local Amount"

@@ -1,0 +1,90 @@
+version: 2
+
+models:
+  - name: int_inp_cols
+    description: "Intermediate model: Input columns transformation - selects and prepares 200 columns"
+    columns:
+      - name: COL_1
+        description: "Prepared column 1"
+      - name: COL_2
+        description: "Prepared column 2"
+      - name: COL_3
+        description: "Prepared column 3"
+      # Note: All 200 columns would be documented in real implementation
+
+  - name: int_exp_md5
+    description: "Intermediate model: Expression transformation - calculates MD5 hash from 200 columns"
+    columns:
+      - name: out_MD5
+        description: "MD5 hash calculated from concatenated 200 columns (32 characters)"
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "length(out_MD5) = 32"
+# --- Chunk 3 ---
+version: 2
+
+models:
+  - name: int_final_mdm_gph_rel
+    description: "Final intermediate processing for MDM product group hierarchy relationships"
+    columns:
+      - name: lvl_7_cd
+        description: "Level 7 code - primary key"
+        tests:
+          - unique
+          - not_null
+      - name: product_grp_cd
+        description: "Product group code"
+        tests:
+          - not_null
+      - name: market_seg_cd
+        description: "Market segment code"
+        tests:
+          - not_null
+      - name: product_tp_cd
+        description: "Product type code"
+        tests:
+          - not_null
+      - name: product_cat_cd
+        description: "Product category code"
+        tests:
+          - not_null
+      - name: brand_gen_cd
+        description: "Brand generation code"
+        tests:
+          - not_null
+      - name: brand_sales_rpting_cd
+        description: "Brand sales reporting code"
+        tests:
+          - not_null
+      - name: item_family_cd
+        description: "Item family code"
+        tests:
+          - not_null
+
+  - name: int_final_mtrl_master
+    description: "Final intermediate processing for material master data"
+    columns:
+      - name: mtrl_nbr
+        description: "Material number - primary key"
+        tests:
+          - unique
+          - not_null
+      - name: lvl_7_cd
+        description: "Level 7 code - foreign key to MDM_GPH_REL"
+      - name: mtrl_desc
+        description: "Material description"
+      - name: mtrl_tp
+        description: "Material type"
+      - name: base_uom
+        description: "Base unit of measure"
+      - name: net_wgt
+        description: "Net weight"
+      - name: gross_wgt
+        description: "Gross weight"
+      - name: mtrl_vol
+        description: "Material volume"
+      - name: created_dt
+        description: "Creation date"
+      - name: last_chg_dt
+        description: "Last change date"

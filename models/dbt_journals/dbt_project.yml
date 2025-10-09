@@ -1,0 +1,108 @@
+name: 'dbt_journals'
+version: '1.0.0'
+config-version: 2
+
+# This dbt project combines multiple workflows:
+# - wf_BL_FF_ZJ_JOURNALS
+# - wf_BL_FF_ZJ_JOURNALS_STG
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_journals:
+    staging:
+      +materialized: view
+      +tags: ['staging']
+    intermediate:
+      +materialized: view
+      +tags: ['intermediate']
+    marts:
+      +materialized: table
+      +tags: ['mart']
+
+vars:
+  # Date format for Julian date conversion
+  julian_date_format: 'YYYYDDD'
+# --- Chunk 2 ---
+name: 'dbt_journals'
+version: '1.0.0'
+config-version: 2
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_journals:
+    staging:
+      +materialized: view
+      +tags: ['staging']
+    intermediate:
+      +materialized: view
+      +tags: ['intermediate']
+    marts:
+      +materialized: table
+      +tags: ['mart']
+
+vars:
+  # Source system variables
+  source_schema: 'CRPDTA'
+  staging_schema: 'STG'
+  
+  # File processing variables
+  source_file_dir: '/data/inbound'
+  target_file_dir: '/data/outbound'
+# --- Chunk 3 ---
+name: 'dbt_journals'
+version: '1.0.0'
+config-version: 2
+
+profile: 'dbt_journals'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_journals:
+    staging:
+      +materialized: view
+      +tags: ['staging', 'jde']
+    intermediate:
+      +materialized: view
+      +tags: ['intermediate', 'transformation']
+    marts:
+      +materialized: table
+      +tags: ['mart', 'analytics']
+
+vars:
+  # JDE system variables
+  jde_company_codes: ['00001', '00002', '00003']
+  current_fiscal_year: 2024
+  base_currency: 'USD'

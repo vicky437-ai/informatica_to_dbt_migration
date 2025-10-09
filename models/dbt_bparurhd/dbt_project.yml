@@ -1,0 +1,35 @@
+name: 'dbt_bparurhd'
+version: '1.0.0'
+config-version: 2
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_bparurhd:
+    staging:
+      +materialized: view
+      +tags: ['staging']
+    intermediate:
+      +materialized: view
+      +tags: ['intermediate']
+    marts:
+      +materialized: table
+      +tags: ['mart']
+
+vars:
+  # Source system parameters
+  param_sq_filter: ""
+  param_src_pre_sql: ""
+  param_src_post_sql: ""
+  param_tgt_pre_sql: ""
+  param_tgt_post_sql: ""

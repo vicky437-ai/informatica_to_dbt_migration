@@ -1,0 +1,94 @@
+version: 2
+
+models:
+  - name: stg_arurhd
+    description: "Staging model for ARURHD source table from Japan BPCS"
+    columns:
+      - name: lhspcd
+        description: "Supplier code - primary business key"
+        tests:
+          - not_null
+      - name: lhspno
+        description: "Supplier number"
+      - name: lhsptk
+        description: "Supplier type key"
+      - name: lhtrbk
+        description: "Trade book indicator"
+      - name: lhegcd
+        description: "Entity group code"
+      - name: lhedsq
+        description: "Entity sequence number"
+      - name: lhcscd
+        description: "Cost center code"
+      - name: lhhpcd
+        description: "Holding company code"
+      - name: lhsptp
+        description: "Supplier type"
+      - name: lhtacd
+        description: "Tax area code"
+      - name: lhspnd
+        description: "Spend amount"
+      - name: lhnyyd
+        description: "Net year amount"
+      - name: lhrcdt
+        description: "Record date"
+      - name: lhpayk
+        description: "Payment key"
+      - name: lhdda1
+        description: "Data field 1"
+      - name: lhdda2
+        description: "Data field 2"
+      - name: lhspat
+        description: "Spend amount total"
+      - name: lhtaxm
+        description: "Tax amount"
+      - name: lhaskm
+        description: "Ask amount"
+      - name: lhrsdt
+        description: "Reset date"
+      - name: lhtaxh
+        description: "Tax hold amount"
+      - name: lhrsam
+        description: "Reset amount"
+      - name: lhslcd
+        description: "Sales code"
+      - name: lhctax
+        description: "Current tax amount"
+      - name: lhchom
+        description: "Current home amount"
+      - name: lhtden
+        description: "Trade denomination"
+      - name: lhtded
+        description: "Trade deduction date"
+      - name: lhrcrm
+        description: "Record amount"
+      - name: lhdlkb
+        description: "Delink book indicator"
+      - name: lhodno
+        description: "Order number"
+      - name: lhkhst
+        description: "Key history code"
+      - name: lhnksf
+        description: "Net key suffix"
+      - name: lhspnk
+        description: "Supplier net key"
+      - name: lhnyuf
+        description: "Net year update flag"
+      - name: lhtaxf
+        description: "Tax flag"
+      - name: lhsefg
+        description: "Settlement flag"
+      - name: lhsedt
+        description: "Settlement date"
+      - name: lhhryu
+        description: "History year update"
+      - name: lhdltf
+        description: "Delete flag"
+      - name: lhrldt
+        description: "Release date"
+      - name: lhrltm
+        description: "Release time"
+      - name: lhrlur
+        description: "Release user"
+      - name: lhrlpg
+        description: "Release program"

@@ -1,0 +1,99 @@
+version: 2
+
+sources:
+  - name: bpcs_japan
+    description: "BPCS Japan source system - XSPPACJP database"
+    database: XSPPACJP
+    schema: RTRNLIB
+    tables:
+      - name: ARURHD
+        description: "ARURHD table from Japan BPCS system"
+        columns:
+          - name: LHSPCD
+            description: "Supplier code"
+            tests:
+              - not_null
+          - name: LHSPNO
+            description: "Supplier number"
+          - name: LHSPTK
+            description: "Supplier type key"
+          - name: LHTRBK
+            description: "Trade book indicator"
+          - name: LHEGCD
+            description: "Entity group code"
+          - name: LHEDSQ
+            description: "Entity sequence number"
+          - name: LHCSCD
+            description: "Cost center code"
+          - name: LHHPCD
+            description: "Holding company code"
+          - name: LHSPTP
+            description: "Supplier type"
+          - name: LHTACD
+            description: "Tax area code"
+          - name: LHSPND
+            description: "Spend amount"
+          - name: LHNYYD
+            description: "Net year amount"
+          - name: LHRCDT
+            description: "Record date"
+          - name: LHPAYK
+            description: "Payment key"
+          - name: LHDDA1
+            description: "Data field 1"
+          - name: LHDDA2
+            description: "Data field 2"
+          - name: LHSPAT
+            description: "Spend amount total"
+          - name: LHTAXM
+            description: "Tax amount"
+          - name: LHASKM
+            description: "Ask amount"
+          - name: LHRSDT
+            description: "Reset date"
+          - name: LHTAXH
+            description: "Tax hold amount"
+          - name: LHRSAM
+            description: "Reset amount"
+          - name: LHSLCD
+            description: "Sales code"
+          - name: LHCTAX
+            description: "Current tax amount"
+          - name: LHCHOM
+            description: "Current home amount"
+          - name: LHTDEN
+            description: "Trade denomination"
+          - name: LHTDED
+            description: "Trade deduction date"
+          - name: LHRCRM
+            description: "Record amount"
+          - name: LHDLKB
+            description: "Delink book indicator"
+          - name: LHODNO
+            description: "Order number"
+          - name: LHKHST
+            description: "Key history code"
+          - name: LHNKSF
+            description: "Net key suffix"
+          - name: LHSPNK
+            description: "Supplier net key"
+          - name: LHNYUF
+            description: "Net year update flag"
+          - name: LHTAXF
+            description: "Tax flag"
+          - name: LHSEFG
+            description: "Settlement flag"
+          - name: LHSEDT
+            description: "Settlement date"
+          - name: LHHRYU
+            description: "History year update"
+          - name: LHDLTF
+            description: "Delete flag"
+          - name: LHRLDT
+            description: "Release date"
+          - name: LHRLTM
+            description: "Release time"
+          - name: LHRLUR
+            description: "Release user"
+          - name: LHRLPG
+            description: "Release program"

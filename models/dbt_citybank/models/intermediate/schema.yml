@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: int_sq_t_ap_citibank_vca
+    description: "Source Qualifier: Applies source filtering and column selection for Citibank VCA data"
+    columns:
+      - name: action_type
+        description: "Action type"
+        tests:
+          - not_null
+      - name: record_id
+        description: "Record identifier"
+        tests:
+          - not_null
+      - name: issuer_id
+        description: "Issuer identifier"
+      - name: valid_from
+        description: "Validity start date"
+      - name: valid_to
+        description: "Validity end date"
+
+  - name: int_exp_set_columns
+    description: "Expression transformation: Formats dates and generates dynamic filename"
+    columns:
+      - name: action_type
+        description: "Action type"
+      - name: record_id
+        description: "Record identifier"
+      - name: out_valid_from
+        description: "Formatted validity start date with timezone"
+      - name: out_valid_to
+        description: "Formatted validity end date with timezone"
+      - name: out_file_name
+        description: "Generated filename with timestamp"
+        tests:
+          - not_null

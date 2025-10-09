@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: stg_cust_master
+    description: "Staging model for customer master data"
+    columns:
+      - name: cust_nbr
+        description: "Customer number"
+        tests:
+          - unique
+          - not_null
+      - name: cntry_key
+        description: "Country key"
+      - name: city
+        description: "City name"
+      - name: central_ordr_blk
+        description: "Central order block indicator"
+      - name: attribute_9
+        description: "Customer attribute 9"
+
+  - name: stg_ptnr_fctn
+    description: "Staging model for partner function data"
+    columns:
+      - name: cust_nbr
+        description: "Customer number"
+        tests:
+          - not_null
+      - name: ptnr_cust_nbr
+        description: "Partner customer number"
+
+  - name: stg_cust_adrs
+    description: "Staging model for customer address data"
+    columns:
+      - name: adrs_nbr
+        description: "Address number"
+        tests:
+          - unique
+          - not_null
+      - name: cust_nbr
+        description: "Customer number"
+      - name: name_1
+        description: "Customer name"

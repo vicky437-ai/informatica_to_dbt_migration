@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: int_sq_arurhd
+    description: "Source Qualifier transformation for ARURHD - applies source filtering and column selection"
+    columns:
+      - name: lhspcd
+        description: "Supplier code"
+        tests:
+          - not_null
+      - name: lhspno
+        description: "Supplier number"
+      - name: lhrcdt
+        description: "Record date"
+        tests:
+          - not_null
+
+  - name: int_exp_passthrough
+    description: "Expression transformation - adds ETL load timestamp and passes through all columns"
+    columns:
+      - name: lhspcd
+        description: "Supplier code"
+        tests:
+          - not_null
+      - name: etl_load_dte
+        description: "ETL load timestamp - when record was processed"
+        tests:
+          - not_null

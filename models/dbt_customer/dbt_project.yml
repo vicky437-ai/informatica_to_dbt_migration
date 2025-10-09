@@ -1,0 +1,30 @@
+name: 'dbt_customer'
+version: '1.0.0'
+config-version: 2
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  dbt_customer:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table
+
+vars:
+  # Default values for parameterization
+  session_error_threshold: 0
+  source_filter: ""
+  lookup_table_name: "BUS_PTNR_IDS"

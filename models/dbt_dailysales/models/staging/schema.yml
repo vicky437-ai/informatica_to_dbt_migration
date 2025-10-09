@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_t_cm_z1_sales
+    description: "Staging model for T_CM_Z1_SALES source table"
+    columns:
+      - name: t_cm_z1_sales_id
+        description: "Primary key for sales transaction"
+        tests:
+          - unique
+          - not_null
+      - name: ordernumber
+        description: "Order number"
+      - name: invoicenumber
+        description: "Invoice number"
+      - name: invoicedate
+        description: "Invoice date"
+      - name: sourcesystem
+        description: "Source system identifier"
+        tests:
+          - not_null
+      - name: businesssegment
+        description: "Business segment code"
+      - name: customernumber
+        description: "Customer number"
+      - name: itemnumber
+        description: "Item number"
+      - name: unitsaleprice
+        description: "Unit sale price"
+      - name: quantityshipped
+        description: "Quantity shipped"
+      - name: etl_load_dte
+        description: "ETL load timestamp"

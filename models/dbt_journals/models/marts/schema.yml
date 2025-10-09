@@ -1,0 +1,111 @@
+# From wf_BL_FF_ZJ_JOURNALS.XML
+version: 2
+
+models:
+  - name: fct_s_zj_journals
+    description: "Fact table: ZJ Journals for Oracle database target"
+    columns:
+      - name: f0911_glicu
+        description: "GL ICU field"
+      - name: f0911_glicut
+        description: "GL ICUT field"
+      - name: f0911_gldct
+        description: "GL DCT field - part of primary key"
+        tests:
+          - not_null
+      - name: f0911_gldoc
+        description: "GL DOC field - part of primary key"
+        tests:
+          - not_null
+      - name: f0911_glkco
+        description: "GL KCO field - part of primary key"
+        tests:
+          - not_null
+      - name: f0911_gldgj
+        description: "GL DGJ field - part of primary key"
+        tests:
+          - not_null
+      - name: f0911_gllt
+        description: "GL LT field - part of primary key"
+        tests:
+          - not_null
+      - name: f0911_gljeln
+        description: "GL JELN field - part of primary key"
+        tests:
+          - not_null
+      - name: etl_load_dte
+        description: "ETL load timestamp"
+        tests:
+          - not_null
+
+  - name: fct_ff_bl_zj_journals
+    description: "Fact table: Blackline ZJ Journals flat file export"
+    columns:
+      - name: batch_number
+        description: "Batch number identifier"
+        tests:
+          - not_null
+      - name: document_number
+        description: "Document number"
+        tests:
+          - not_null
+      - name: journal_entry_line_number
+        description: "Journal entry line number"
+        tests:
+          - not_null
+# --- From wf_BL_FF_ZJ_JOURNALS_STG.XML ---
+
+models:
+  - name: fct_s_zj_journals
+    description: "Fact table: Staging ZJ Journals - Structured journal data for staging environment"
+    columns:
+      - name: f0911_gldct
+        description: "Document Type"
+        tests:
+          - not_null
+      - name: f0911_gldoc
+        description: "Document Number"
+        tests:
+          - not_null
+      - name: f0911_glkco
+        description: "Company"
+        tests:
+          - not_null
+      - name: f0911_gldgj
+        description: "G/L Date"
+        tests:
+          - not_null
+      - name: f0911_gllt
+        description: "Ledger Type"
+        tests:
+          - not_null
+      - name: f0911_gljeln
+        description: "Journal Entry Line Number"
+        tests:
+          - not_null
+      - name: etl_load_dte
+        description: "ETL Load Date"
+        tests:
+          - not_null
+
+  - name: fct_ff_bl_zj_journals
+    description: "Fact table: Flat File BL ZJ Journals - Formatted journal data for Blackline export"
+    columns:
+      - name: batch_number
+        description: "Batch Number"
+      - name: document_type
+        description: "Document Type"
+      - name: document_number
+        description: "Document Number"
+      - name: document_company
+        description: "Document Company"
+      - name: gl_date
+        description: "GL Date"
+      - name: journal_entry_line_number
+        description: "Journal Entry Line Number"
+      - name: account_number
+        description: "Account Number"
+      - name: amount
+        description: "Amount"
+      - name: filename
+        description: "Output filename for flat file export"
